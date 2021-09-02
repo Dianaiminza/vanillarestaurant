@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {detailsOrder, payOrder } from '../actions/orderActions';
 
-import PaypalButton from '../components/PaypalButton';
+import MpesaButton from '../components/PaypalButton';
 function OrderScreen(props) {
 
   const orderPay = useSelector(state => state.orderPay);
@@ -90,7 +90,7 @@ function OrderScreen(props) {
                         </div>
                       </div>
                       <div className="cart-price">
-                        ${item.price}
+                        Ksh{item.price}
                       </div>
                     </li>
                   )
@@ -105,7 +105,7 @@ function OrderScreen(props) {
             <li className="placeorder-actions-payment">
               {loadingPay && <div>Finishing Payment...</div>}
               {!order.isPaid &&
-                <PaypalButton
+                <MpesaButton
                   amount={order.totalPrice}
                   onSuccess={handleSuccessPayment} />
               }
@@ -115,19 +115,19 @@ function OrderScreen(props) {
             </li>
             <li>
               <div>Items</div>
-              <div>${order.itemsPrice}</div>
+              <div>Ksh{order.itemsPrice}</div>
             </li>
             <li>
               <div>Shipping</div>
-              <div>${order.shippingPrice}</div>
+              <div>Ksh{order.shippingPrice}</div>
             </li>
             <li>
               <div>Tax</div>
-              <div>${order.taxPrice}</div>
+              <div>Ksh{order.taxPrice}</div>
             </li>
             <li>
               <div>Order Total</div>
-              <div>${order.totalPrice}</div>
+              <div>Ksh{order.totalPrice}</div>
             </li>
           </ul>
 
