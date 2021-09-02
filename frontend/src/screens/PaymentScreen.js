@@ -32,7 +32,7 @@ function PaymentScreen(props) {
                   value="M-PESA"
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
-                <label for="paymentMethod">Paypal</label>
+                <label for="paymentMethod">M-PESA</label>
                
                 
               </div>
