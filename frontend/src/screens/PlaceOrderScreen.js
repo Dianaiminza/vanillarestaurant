@@ -89,7 +89,7 @@ function PlaceOrderScreen(props) {
                       </div>
                     </div>
                     <div className="cart-price">
-                      Ksh{item.price}
+                      ${item.price}
                     </div>
                   </li>
                 )
