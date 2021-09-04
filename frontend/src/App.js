@@ -90,7 +90,22 @@ function App() {
             <Route path="/" exact={true} component={HomeScreen}/>
           </div>
         </main>
-        <footer className="footer">All right reserved.</footer>
+        <footer className="footer">All right reserved.
+        <li><a href="tel://0728131955">+25428131955</a></li>
+<li><a href="mailto://dianaiminza.99@gmail.com">[dianaiminza.99@gmail.com]</a></li>
+<ul className="list-unstyled social">
+<li><a href="https://github.com/Dianaiminza"rel="noopener noreferrer"target="_blank">
+    <i className="fa fa-github-square"aria-hidden="true"/>
+</a></li>
+<li><a href="https://twitter.com/captainiminza"rel="noopener noreferrer"target="_blank">
+    <i className="fa fa-twitter-square"aria-hidden="true"/>
+</a></li>
+
+<li><a href="https://www.linkedin.com/in/diana-iminza/"rel="noopener noreferrer"target="_blank">
+    <i className="fa fa-linkedin-square"aria-hidden="true"/>
+</a></li>
+</ul>
+        </footer>
       </div>
     </BrowserRouter>
   );
