@@ -110,7 +110,7 @@ function ProfileScreen(props) {
                   <td>{order.totalPrice}</td>
                   <td>{order.isPaid}</td>
                   <td>
-                    <Link to={"/order/" + order._id}>DETAILS</Link>
+                    <Link to={"/order/:id" + order._id}>DETAILS</Link>
                   </td>
                 </tr>))}
               </tbody>
