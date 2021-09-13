@@ -33,7 +33,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 2.5rem;
 }
 .brand a {
   color: #ffffff;
@@ -44,7 +44,7 @@ button {
 .header-links a {
   color: #ffffff;
   text-decoration: none;
-  padding: 1rem;
+  padding: 3rem;
 }
 .header-links a:hover {
   color: #ff8000;
