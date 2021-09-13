@@ -76,7 +76,7 @@ function App() {
           </ul>
         </aside>
         <main className="main">
-        <SliderScreen/>
+        {/* <SliderScreen/> */}
           <div className="content">
             <Route path="/orders" component={OrdersScreen}/>
             <Route path="/profile" component={ProfileScreen}/>
