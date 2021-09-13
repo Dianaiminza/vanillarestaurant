@@ -108,7 +108,7 @@ const Footer = () => {
           <SocialIcon color="3B5999">
           <a href="https://facebook.com/vanillarestaurant"rel="noopener noreferrer"target="_blank">
             <Facebook />
-            <a/>
+            </a>
           </SocialIcon>
           <SocialIcon color="E4405F">
 <a href="https://instagram.com/vanillarestaurant"rel="noopener noreferrer"target="_blank">
