@@ -104,8 +104,9 @@ const Footer = () => {
         <Desc>
           There are many variations of foods,desserts and drinks to enjoy from our prestigious restaurant.
         </Desc>
+         <Title>Follow Us On</Title>
         <SocialContainer>
-        <Title>Follow Us On</Title>
+       
           <SocialIcon color="3B5999">
           <a href="https://facebook.com/vanillarestaurant"rel="noopener noreferrer"target="_blank">
             <Facebook />
