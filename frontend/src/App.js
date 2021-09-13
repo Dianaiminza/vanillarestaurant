@@ -15,6 +15,7 @@ import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import  FooterScreen from './screens/FooterScreen';
+import  SliderScreen from './screens/SliderScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -75,6 +76,7 @@ function App() {
           </ul>
         </aside>
         <main className="main">
+        <SliderScreen/>
           <div className="content">
             <Route path="/orders" component={OrdersScreen}/>
             <Route path="/profile" component={ProfileScreen}/>
