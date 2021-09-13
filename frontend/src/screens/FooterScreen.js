@@ -105,6 +105,7 @@ const Footer = () => {
           There are many variations of foods,desserts and drinks to enjoy from our prestigious restaurant.
         </Desc>
         <SocialContainer>
+        <Title>Follow Us On</Title>
           <SocialIcon color="3B5999">
           <a href="https://facebook.com/vanillarestaurant"rel="noopener noreferrer"target="_blank">
             <Facebook />
@@ -148,7 +149,7 @@ const Footer = () => {
           <Room style={{marginRight:"10px"}}/> 589,Royal Park Langata, Nairobi
         </ContactItem>
         <ContactItem>
-          <Phone style={{marginRight:"10px"}}/><a href="tel://0728131955">+25428131955</a>
+          <Phone style={{marginRight:"10px"}}/><a href="tel://0728131955">+254728131955</a>
         </ContactItem>
         <ContactItem>
           <MailOutline style={{marginRight:"10px"}} /><a href="mailto://vanillarestaurant@gmail.com">vanillarestaurant@gmail.com</a>
