@@ -1,3 +1,33 @@
+export const sliderItems = [
+    {
+      id: 1,
+      img: '/images/Beef.jpg',
+      title: "BIG MEALS",
+      desc: "WE OFFER THE BEST NYAMA CHOMA.",
+      bg: "f5fafd",
+    },
+    {
+      id: 2,
+      img:'/images/Cappuccino.jpg',
+      title: "BREAKFAST",
+      desc: "Good communication is just as stimulating as black coffee, and just as hard to sleep after.",
+      bg: "fcf1ed",
+    },
+    {
+      id: 3,
+      img: '/images/CheeseCakes',
+      title: "DESSERTS",
+      desc: "You can't buy happiness, but you can buy dessert and that's kind of the same thing.",
+      bg: "fbf0f4",
+    },
+    {
+      id: 4,
+      img: '/images/Coladas.jpg',
+      title: "DRINKS",
+      desc: "Yes, I like Pina Coladas, and getting caught in the rain.",
+      bg: "fbf0f4",
+    },
+  ];
 export default {
   
   products: [

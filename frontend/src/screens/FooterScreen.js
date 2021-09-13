@@ -22,7 +22,7 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-
+import { Link } from 'react-router-dom';
 const Container = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column" })}
@@ -106,30 +106,37 @@ const Footer = () => {
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">
+          <a href="https://facebook.com/vanillarestaurant"rel="noopener noreferrer"target="_blank">
             <Facebook />
+            <a/>
           </SocialIcon>
           <SocialIcon color="E4405F">
+<a href="https://instagram.com/vanillarestaurant"rel="noopener noreferrer"target="_blank">
             <Instagram />
+            </a>
           </SocialIcon>
           <SocialIcon color="55ACEE">
+          <a href="tel://0728131955"rel="noopener noreferrer"target="_blank">
             <WhatsApp />
+            </a>
           </SocialIcon>
           <SocialIcon color="E60023">
+          <a href="https://pinterest.com/vanillarestaurant"rel="noopener noreferrer"target="_blank">
             <Pinterest />
+            </a>
           </SocialIcon>
         </SocialContainer>
       </Left>
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem>About Us</ListItem>
-          <ListItem>FAQs</ListItem>
-          <ListItem>Terms and Conditions</ListItem>
-          <ListItem>Privacy Policy</ListItem>
-          <ListItem>Delivery and Collections</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Terms</ListItem>
+          <ListItem> <Link to="/products">Products</Link></ListItem>
+          <ListItem><Link to="/category/BigMeals">Big Meals</Link></ListItem>
+          <ListItem><Link to="/category/Breakfast">Breakfast</Link></ListItem>
+          <ListItem><Link to="/category/Desserts">Desserts</Link></ListItem>
+          <ListItem><Link to="/category/Drinks">Drinks</Link></ListItem>
+          <ListItem><Link to="/profile">My Account</Link></ListItem>
+          <ListItem><Link to="/shipping">OrderTracking</Link></ListItem>
         </List>
         <Title>OPENING TIMES</Title>
         <ListItem>Mon - Sat: 8am - 7pm</ListItem>
@@ -141,18 +148,17 @@ const Footer = () => {
           <Room style={{marginRight:"10px"}}/> 589,Royal Park Langata, Nairobi
         </ContactItem>
         <ContactItem>
-          <Phone style={{marginRight:"10px"}}/> + 254 728131955
+          <Phone style={{marginRight:"10px"}}/><a href="tel://0728131955">+25428131955</a>
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{marginRight:"10px"}} /> vanillarestaurant@gmail.com
+          <MailOutline style={{marginRight:"10px"}} /><a href="mailto://vanillarestaurant@gmail.com">vanillarestaurant@gmail.com</a>
         </ContactItem>
         <ContactItem>
-        <a target="_blank" class="button-icon" href="https://www.google.com/maps/place/Langata,+Nairobi/@-1.3642288,36.7012495,13z/data=!3m1!4b1!4m5!3m4!1s0x182f04e2529bcab3:0xb85155f9a25aa4c0!8m2!3d-1.3640944!4d36.7476257"><i class="fal fa-map-marker-alt"></i> Find on google maps</a>
+        <a target="_blank" class="button-icon" href="https://www.google.com/maps/place/Langata,+Nairobi/@-1.3642288,36.7012495,13z/data=!3m1!4b1!4m5!3m4!1s0x182f04e2529bcab3:0xb85155f9a25aa4c0!8m2!3d-1.3640944!4d36.7476257"><i class="fa fa-map-marker-alt"></i> Find us on google maps</a>
         </ContactItem>
-        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+        
       </Right>
     </Container>
   );
 };
-
 export default Footer;
