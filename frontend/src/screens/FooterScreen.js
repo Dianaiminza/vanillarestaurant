@@ -154,7 +154,7 @@ const Footer = () => {
           <MailOutline style={{marginRight:"10px"}} /><a href="mailto://vanillarestaurant@gmail.com">vanillarestaurant@gmail.com</a>
         </ContactItem>
         <ContactItem>
-        <a target="_blank" class="button-icon" href="https://www.google.com/maps/place/Langata,+Nairobi/@-1.3642288,36.7012495,13z/data=!3m1!4b1!4m5!3m4!1s0x182f04e2529bcab3:0xb85155f9a25aa4c0!8m2!3d-1.3640944!4d36.7476257"><i class="fa fa-map-marker-alt"></i> Find us on google maps</a>
+        <a target="_blank" class="button-icon" href="https://www.google.com/maps/place/Royal+Park+Estate/@-1.3284223,36.7732175,17z/data=!4m9!1m2!2m1!1sroyal+park+langata!3m5!1s0x0:0x1f2bb156cf666be4!8m2!3d-1.3285614!4d36.7781281!15sChJyb3lhbCBwYXJrIGxhbmdhdGGSARVyZXNpZGVudHNfYXNzb2NpYXRpb24"><i class="fa fa-map-marker-alt"></i> Find us on google maps</a>
         </ContactItem>
         
       </Right>
