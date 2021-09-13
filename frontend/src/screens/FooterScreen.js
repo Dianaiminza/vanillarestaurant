@@ -98,6 +98,7 @@ const Payment = styled.img`
 
 const Footer = () => {
   return (
+      <>
     <Container>
       <Left>
         <Logo>Vanilla Restaurant.</Logo>
@@ -165,6 +166,7 @@ const Footer = () => {
 			<a href="#vanillarestaurant" class="move-top">This Way Up</a>
 			<img src="//cdn.shopify.com/s/files/1/0015/1185/0042/t/14/assets/footer-icon.jpg?v=10449586777609619721" alt="Vanilla &amp; Restaurant" loading="lazy" importance="low"> 
 		</div>
+        </>
   );
 };
 export default Footer;
