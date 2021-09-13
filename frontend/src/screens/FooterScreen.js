@@ -130,9 +130,9 @@ const Footer = () => {
           <ListItem>Order Tracking</ListItem>
           <ListItem>Terms</ListItem>
         </List>
-        <Title>OPENING TIMES</TITLE>
-        <ListItem>Mon - Sat: 11am - 7pm</ListItem>
-          <ListItem>Sundays: 12pm - 6pm</ListItem>
+        <Title>OPENING TIMES</Title>
+        <ListItem>Mon - Sat: 8am - 7pm</ListItem>
+          <ListItem>Sundays: 8am - 6pm</ListItem>
       </Center>
       <Right>
         <Title>Contact</Title>

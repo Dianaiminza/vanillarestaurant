@@ -15,6 +15,7 @@ import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import  FooterScreen from './screens/FooterScreen';
+import  NewsScreen from './screens/NewsScreen';
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -90,6 +91,7 @@ function App() {
             <Route path="/" exact={true} component={HomeScreen}/>
           </div>
         </main>
+<NewsScreen/>
         <FooterScreen/>
       </div>
     </BrowserRouter>
