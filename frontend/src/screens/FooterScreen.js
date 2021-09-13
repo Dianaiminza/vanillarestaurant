@@ -145,7 +145,7 @@ const Footer = () => {
           <ListItem>Sundays: 8am - 6pm</ListItem>
       </Center>
       <Right>
-        <Title>Contact</Title>
+        <Title>Contact Us</Title>
         <ContactItem>
           <Room style={{marginRight:"10px"}}/> 589,Royal Park Langata, Nairobi
         </ContactItem>
@@ -161,6 +161,10 @@ const Footer = () => {
         
       </Right>
     </Container>
+    <div class="footer-bottom">
+			<a href="#vanillarestaurant" class="move-top">This Way Up</a>
+			<img src="//cdn.shopify.com/s/files/1/0015/1185/0042/t/14/assets/footer-icon.jpg?v=10449586777609619721" alt="Vanilla &amp; Restaurant" loading="lazy" importance="low"> 
+		</div>
   );
 };
 export default Footer;

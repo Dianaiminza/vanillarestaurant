@@ -69,6 +69,18 @@ a {
 a:hover {
   color: #ff8000;
 }
+.footer-bottom {
+  font-size: 0;
+  border-top: 1px solid #68696b;
+  position: relative;
+}
+.move-top{
+  position: absolute;
+  top: 0;
+    left: 50%;
+    border-left: 40px solid #fff;
+    border-right: 40px solid #fff;
+}
 /* Home Screen */
 .products {
   display: flex;
