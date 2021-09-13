@@ -58,9 +58,10 @@ const SocialIcon = styled.div`
 `;
 
 const Center = styled.div`
+  flex-direction: column;
   flex: 1;
   padding: 20px;
-  ${mobile({ display: "none" })}
+  ${mobile({ display: "flex" })}
 `;
 
 const Title = styled.h3`
@@ -73,11 +74,13 @@ const List = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  ${mobile({ backgroundColor: "#fff8f8" })}
 `;
 
 const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
+  ${mobile({ backgroundColor: "#fff8f8" })}
 `;
 
 const Right = styled.div`
@@ -85,11 +88,16 @@ const Right = styled.div`
   padding: 20px;
   ${mobile({ backgroundColor: "#fff8f8" })}
 `;
-
+const Bottom = styled.div`
+  flex: 1;
+  padding: 20px;
+  ${mobile({ backgroundColor: "#fff8f8" })}
+`;
 const ContactItem = styled.div`
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  ${mobile({ backgroundColor: "#fff8f8" })}
 `;
 
 const Payment = styled.img`
@@ -161,10 +169,12 @@ const Footer = () => {
         </ContactItem>
         
       </Right>
+      <Bottom>
       <div class="footer-bottom">
 			<a href="#vanillarestaurant" class="move-top">This Way Up</a>
 			<img src="//cdn.shopify.com/s/files/1/0015/1185/0042/t/14/assets/footer-icon.jpg?v=10449586777609619721" alt="Vanilla &amp; Restaurant" loading="lazy" importance="low"/> 
 		</div>
+        </Bottom>
     </Container>
     
         </>
