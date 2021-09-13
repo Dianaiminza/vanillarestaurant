@@ -16,6 +16,7 @@ import {
   MailOutline,
   Phone,
   Pinterest,
+  WhatsApp,
   Room,
   Twitter,
 } from "@material-ui/icons";
