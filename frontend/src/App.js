@@ -14,7 +14,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
-
+import  FooterScreen from './screens/FooterScreen';
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -90,7 +90,7 @@ function App() {
             <Route path="/" exact={true} component={HomeScreen}/>
           </div>
         </main>
-        <footer className="footer">All right reserved.</footer>
+        <FooterScreen/>
       </div>
     </BrowserRouter>
   );
