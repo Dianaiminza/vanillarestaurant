@@ -100,9 +100,7 @@ const ContactItem = styled.div`
   ${mobile({ backgroundColor: "#fff8f8" })}
 `;
 
-const Payment = styled.img`
-    width: 50%;
-`;
+
 
 const Footer = () => {
   return (
@@ -167,8 +165,8 @@ const Footer = () => {
         <ContactItem>
         <a target="_blank" class="button-icon" href="https://www.google.com/maps/place/Royal+Park+Estate/@-1.3284223,36.7732175,17z/data=!4m9!1m2!2m1!1sroyal+park+langata!3m5!1s0x0:0x1f2bb156cf666be4!8m2!3d-1.3285614!4d36.7781281!15sChJyb3lhbCBwYXJrIGxhbmdhdGGSARVyZXNpZGVudHNfYXNzb2NpYXRpb24"><i class="fa fa-map-marker-alt"></i> Find us on google maps</a>
         </ContactItem>
-        <Title>This Way Up></Title>
-        <a href="#vanillarestaurant" class="move-top">This Way Up</a>
+        
+        <a href="/" class="move-top">This Way Up</a>
 			<img src="//cdn.shopify.com/s/files/1/0015/1185/0042/t/14/assets/footer-icon.jpg?v=10449586777609619721" alt="Vanilla &amp; Restaurant" loading="lazy" importance="low"/> 
       </Right>
       
