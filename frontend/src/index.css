@@ -40,7 +40,7 @@ button {
 }
 .brand a {
   color: #ffffff;
-  font-size:  2rem;
+  font-size:  1.8rem;
   font-weight: bold;
   text-decoration: none;
 }
@@ -73,13 +73,7 @@ a:hover {
   font-size: 0;
   border-top: 1px solid #68696b;
 }
-.move-top{
-  position: absolute;
-  bottom: 0;
-    left: 50%;
-    border-left: 40px solid #fff;
-    border-right: 40px solid #fff;
-}
+
 /* Home Screen */
 .products {
   display: flex;
