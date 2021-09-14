@@ -8,6 +8,12 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Nunito Sans', sans-serif;
+
+}
+@media only screen and (max-width: 380px) {
+  [class*="col-"] {
+    width: 100%;
+  }
 }
 button {
   font-size: 1.6rem;
