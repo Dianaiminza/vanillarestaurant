@@ -9,7 +9,7 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  // const [orders,setOrders ] = useState([]);
+  const [orders,setOrders ] = useState([]);
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -29,7 +29,7 @@ function ProfileScreen(props) {
   const myOrderList = useSelector(state => state.myOrderList);
   
   console.log(myOrderList)
-  const { loading: loadingOrders,error: errorOrders, orders} = myOrderList;
+  const { loading: loadingOrders,error: errorOrders, } = myOrderList;
   
   useEffect(() => {
     if (userInfo) {
@@ -39,8 +39,10 @@ function ProfileScreen(props) {
       setPassword(userInfo.password);
      
     }
-    dispatch(listMyOrders(userInfo));
-
+    dispatch(listMyOrders());
+return (res) => {
+     setOrders(res.data.order) 
+    };
   }, [userInfo])
   
 
