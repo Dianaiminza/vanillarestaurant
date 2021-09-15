@@ -17,8 +17,7 @@ function OrderScreen(props) {
     } else {
       dispatch(detailsOrder(props.match.params.id));
     }
-    return () => {
-    };
+    
   }, [successPay]);
 
   const handleSuccessPayment = (paymentResult) => {
@@ -41,8 +40,8 @@ function OrderScreen(props) {
           </h3>
           
             <div>
-              {order.shipping.address}, {order.shipping.city},
-          {order.shipping.postalCode}, {order.shipping.country},
+              {order.shipping.address}, {order.shipping.estate},
+          {order.shipping.postalCode}, {order.shipping.phonenumber},
           </div>
             <div>
               {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}

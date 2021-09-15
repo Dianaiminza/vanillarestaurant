@@ -8,7 +8,7 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [orders,setOrders]=useState([]);
+  const [orders]=useState([]);
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -38,9 +38,7 @@ function ProfileScreen(props) {
      
     }
     dispatch(listMyOrders());
-    return (res) => {
-  setOrders(res.myOrderList);
-    };
+
   }, [userInfo])
 
   return <div className="profile">
@@ -102,14 +100,14 @@ function ProfileScreen(props) {
                 </tr>
               </thead>
               <tbody>
-                {orders.map(order => (
+                {myOrderList.map(order => (
                 <tr >
                   <td>{order._id}</td>
                   <td>{order.createdAt}</td>
                   <td>{order.totalPrice}</td>
                   <td>{order.isPaid}</td>
                   <td>
-                    <Link to={"/order" + order._id}>DETAILS</Link>
+                    <Link to={"/order/" + order._id}>DETAILS</Link>
                   </td>
                 </tr>))}
               </tbody>

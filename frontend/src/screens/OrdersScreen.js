@@ -14,9 +14,7 @@ function OrdersScreen(props) {
 
   useEffect(() => {
     dispatch(listOrders());
-    return () => {
-      //
-    };
+    
   }, [successDelete]);
 
   const deleteHandler = (order) => {
@@ -45,7 +43,7 @@ function OrdersScreen(props) {
             </tr>
           </thead>
           <tbody>
-            {orders.map(order => (<tr key={order._id}>
+            {orderList.map(order => (<tr key={order._id}>
               <td>{order._id}</td>
               <td>{order.createdAt}</td>
               <td>{order.totalPrice}</td>
