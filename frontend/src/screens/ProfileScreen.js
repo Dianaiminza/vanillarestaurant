@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { logout, update } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { connect } from "react-redux";
+
 
 function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [orders]=useState([]);
+  const [orders,setOrders]=useState([]);
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -27,6 +27,7 @@ function ProfileScreen(props) {
   const { loading, success, error } = userUpdate;
 
   const myOrderList = useSelector(state => state.myOrderList);
+  
   console.log(myOrderList)
   const { loading: loadingOrders,error: errorOrders, } = myOrderList;
   
@@ -119,12 +120,5 @@ return (res) => {
     </div>
   </div>
 }
-export default connect(
-  (state) => ({
-    orders: state.order.orders,
-  }),
-  {
-    listMyOrders ,
-  }
-)(ProfileScreen);
- 
+
+export default ProfileScreen;
