@@ -26,10 +26,10 @@ function ProfileScreen(props) {
   const userUpdate = useSelector(state => state.userUpdate);
   const { loading, success, error } = userUpdate;
 
-  const myOrderList = useSelector(state => state.myOrderList);
+  const listMyOrders = useSelector(state => state.listMyOrders);
   
-  console.log(myOrderList)
-  const { loading: loadingOrders,error: errorOrders, } = myOrderList;
+  console.log(listMyOrders)
+  const { loading: loadingOrders,error: errorOrders, } = listMyOrders;
   
   useEffect(() => {
     if (userInfo) {
@@ -44,7 +44,7 @@ return (res) => {
       setOrders(res.data.myOrderList)
     };
   }, [userInfo])
-console.log(setOrders);
+
   return <div className="profile">
     <div className="profile-info">
       <div className="form">
