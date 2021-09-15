@@ -9,7 +9,7 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  
+  const [orders ] = useState([]);
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -27,7 +27,7 @@ function ProfileScreen(props) {
   const { loading, success, error } = userUpdate;
 
   const myOrderList = useSelector(state => state.myOrderList);
-  const { orders } = myOrderList;
+  
   console.log(myOrderList)
   const { loading: loadingOrders,error: errorOrders, } = myOrderList;
   

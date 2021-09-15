@@ -6,7 +6,7 @@ import { listOrders, deleteOrder } from '../actions/orderActions';
 
 function OrdersScreen(props) {
   const orderList = useSelector(state => state.orderList);
-  const { orders } = orderList;
+  const [orders ] = useState([]);
   const { loading,  error } = orderList;
  
   const orderDelete = useSelector(state => state.orderDelete);
