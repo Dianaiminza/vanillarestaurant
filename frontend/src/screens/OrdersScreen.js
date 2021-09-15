@@ -6,21 +6,19 @@ import { listOrders, deleteOrder } from '../actions/orderActions';
 
 function OrdersScreen(props) {
   const orderList = useSelector(state => state.orderList);
-  const [orders,setOrders ] = useState([]);
-  const { loading,  error } = orderList;
- 
+  // const [orders,setOrders ] = useState([]);
+  const { loading,  error,orders } = orderList;
+ const userSignin = useSelector(state => state.userSignin);
+  const { userInfo } = userSignin;
   const orderDelete = useSelector(state => state.orderDelete);
   const { loading: loadingDelete, success: successDelete, error: errorDelete } = orderDelete;
   
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(listOrders());
-    return (res) => {
-     //
-      setOrders(res.data.order)
-    };
-  }, [successDelete]);
+    
+    dispatch(listOrders(userInfo));
+  }, [successDelete,userInfo]);
 
   const deleteHandler = (order) => {
     dispatch(deleteOrder(order._id));
