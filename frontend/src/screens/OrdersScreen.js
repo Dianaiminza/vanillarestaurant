@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { listOrders, deleteOrder } from '../actions/orderActions';
@@ -7,7 +8,7 @@ import { MY_ORDER_LIST_FAIL } from './../constants/orderConstants';
 function OrdersScreen(props) {
   const orderList = useSelector(state => state.orderList);
   const { loading,  error } = orderList;
-  const [orders,setOrders]=useState([]);
+  const [orders]=useState([]);
   const orderDelete = useSelector(state => state.orderDelete);
   const { loading: loadingDelete, success: successDelete, error: errorDelete } = orderDelete;
   
@@ -16,7 +17,7 @@ function OrdersScreen(props) {
   useEffect(() => {
     dispatch(listOrders());
     return (res) => {
-      setOrders(res.myOrderList)
+      //
     };
   }, [successDelete]);
 
@@ -67,4 +68,12 @@ function OrdersScreen(props) {
       </div>
     </div>
 }
-export default OrdersScreen;
+export default connect(
+  (state) => ({
+    orders: state.order.orders,
+  }),
+  {
+    listOrders,
+  }
+)(OrdersScreen);
+ 
