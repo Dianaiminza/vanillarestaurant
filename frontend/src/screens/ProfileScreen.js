@@ -9,7 +9,7 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [orders ] = useState([]);
+  const [orders,setOrders ] = useState([]);
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -41,7 +41,7 @@ function ProfileScreen(props) {
     }
     dispatch(listMyOrders());
 return (res) => {
-      
+     setOrders(res.data.order) 
     };
   }, [userInfo])
 
