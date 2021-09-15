@@ -6,15 +6,15 @@ import CheckoutSteps from '../components/CheckoutSteps';
 function ShippingScreen(props) {
 
   const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
+  const [estate, setEstate] = useState('');
   const [postalCode, setPostalCode] = useState('');
-  const [country, setCountry] = useState('');
+  const [phonenumber, setPhonenumber] = useState('');
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShipping({ address, city, postalCode, country }));
+    dispatch(saveShipping({ address, estate, postalCode, phonenumber}));
     props.history.push('payment');
   }
   return <div>
@@ -34,10 +34,10 @@ function ShippingScreen(props) {
             </input>
           </li>
           <li>
-            <label htmlFor="city">
-              City
+            <label htmlFor="estate">
+              Estate
           </label>
-            <input type="text" name="city" id="city" onChange={(e) => setCity(e.target.value)}>
+            <input type="text" name="estate" id="estate" onChange={(e) => setEstate(e.target.value)}>
             </input>
           </li>
           <li>
@@ -48,10 +48,10 @@ function ShippingScreen(props) {
             </input>
           </li>
           <li>
-            <label htmlFor="country">
-              Country
+            <label htmlFor="phonenumber">
+              Phone number
           </label>
-            <input type="text" name="country" id="country" onChange={(e) => setCountry(e.target.value)}>
+            <input type="text" name="phonenumber" id="phonenumber" onChange={(e) => setPhonenumber(e.target.value)}>
             </input>
           </li>
 

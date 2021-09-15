@@ -1,9 +1,9 @@
 var  mongoose =require('mongoose');
 const shippingSchema = {
   address: { type: String,required: true },
-  city: { type: String,required: true },
+  estate: { type: String,required: true },
   postalCode: { type: String,required: true  },
-  country: { type: String,required: true },
+  phonenumber: { type: String,required: true },
 };
 
 const paymentSchema = {
