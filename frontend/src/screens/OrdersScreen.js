@@ -17,7 +17,8 @@ function OrdersScreen(props) {
   useEffect(() => {
     dispatch(listOrders());
     return (res) => {
-     setOrders(res.data.order) 
+     //
+      setOrders(res.data.order)
     };
   }, [successDelete]);
 

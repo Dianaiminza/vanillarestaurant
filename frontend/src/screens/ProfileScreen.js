@@ -44,6 +44,7 @@ return (res) => {
      setOrders(res.data.order) 
     };
   }, [userInfo])
+  console.log(setOrders)
 
   return <div className="profile">
     <div className="profile-info">
