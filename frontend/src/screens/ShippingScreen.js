@@ -1,46 +1,30 @@
-import React, {  useState,useSelector } from 'react';
+import React, {  useState } from 'react';
 import {  useDispatch } from 'react-redux';
 import { saveShipping } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 
 function ShippingScreen(props) {
-const [lat, setLat] = useState('');
-  const [lng, setLng] = useState('');
+
   const [address, setAddress] = useState('');
   const [estate, setEstate] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
-   const userAddressMap = useSelector((state) => state.userAddressMap);
-const { address: addressMap } = userAddressMap;
+
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const newLat = addressMap ? addressMap.lat : lat;
-    const newLng = addressMap ? addressMap.lng : lng;
-    if (addressMap) {
-      setLat(addressMap.lat);
-      setLng(addressMap.lng);
-    }
-    let moveOn = true;
-    if (!newLat || !newLng) {
-      moveOn = window.confirm(
-        'You did not set your location on map. Continue?'
-      );
-    }
-    if (moveOn) {
     dispatch(saveShipping({ address, estate, postalCode, phonenumber}));
-    
-      
-      props.history.push('/payment');
-    }
-  };
-  const chooseOnMap = () => {
+    props.history.push('payment');
+  }
+   const chooseOnMap = () => {
     dispatch(
       saveShipping({
-        address, estate,
-        lat,
-        lng,
+        
+        address,
+        
+        postalCode,
+        
       })
     );
     props.history.push('/map');
