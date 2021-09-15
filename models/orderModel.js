@@ -26,10 +26,8 @@ const paymentSchema = {
     paidAt: { type: Date },
     isDelivered: { type: Boolean, default: false },
     deliveredAt: { type: Date },
-  },
-  {
-    timestamps: true,
-  }
+  
+  
 };
 
 const orderItemSchema = new mongoose.Schema({
