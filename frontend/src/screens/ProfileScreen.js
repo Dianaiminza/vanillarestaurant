@@ -41,10 +41,10 @@ function ProfileScreen(props) {
     }
     dispatch(listMyOrders());
 return (res) => {
-      //
+      setOrders(res.data.myOrderList)
     };
   }, [userInfo])
-
+console.log(setOrders);
   return <div className="profile">
     <div className="profile-info">
       <div className="form">
