@@ -26,7 +26,7 @@ function ProfileScreen(props) {
   const userUpdate = useSelector(state => state.userUpdate);
   const { loading, success, error } = userUpdate;
 
-  const myOrderList = useSelector(state => state.listMyOrders );
+  const myOrderList = useSelector(state => state.myOrderList);
   
   console.log(myOrderList)
   const { loading: loadingOrders,error: errorOrders, } = myOrderList;
