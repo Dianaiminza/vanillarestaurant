@@ -1,27 +1,20 @@
-import React, {  useState } from 'react';
-import {  useDispatch,useSelector } from 'react-redux';
+import React, {  useState,useSelector } from 'react';
+import {  useDispatch } from 'react-redux';
 import { saveShipping } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 
 function ShippingScreen(props) {
-const userSignin = useSelector((state) => state.userSignin);
-
-  const { userInfo } = userSignin;
-  
-  const [lat, setLat] = useState('');
+const [lat, setLat] = useState('');
   const [lng, setLng] = useState('');
-  const userAddressMap = useSelector((state) => state.userAddressMap);
-  const { address: addressMap } = userAddressMap;
-  if (!userInfo) {
-    props.history.push('/signin');
-  }
   const [address, setAddress] = useState('');
   const [estate, setEstate] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
-
+   const userAddressMap = useSelector((state) => state.userAddressMap);
+const { address: addressMap } = userAddressMap;
   const dispatch = useDispatch();
- const submitHandler = (e) => {
+
+  const submitHandler = (e) => {
     e.preventDefault();
     const newLat = addressMap ? addressMap.lat : lat;
     const newLng = addressMap ? addressMap.lng : lng;
@@ -36,28 +29,22 @@ const userSignin = useSelector((state) => state.userSignin);
       );
     }
     if (moveOn) {
-      dispatch(
-        saveShipping({
-          
-          address, estate, postalCode, phonenumber,
-          lat: newLat,
-          lng: newLng,
-        })
-      );
+    dispatch(saveShipping({ address, estate, postalCode, phonenumber}));
+    
+      
       props.history.push('/payment');
     }
   };
   const chooseOnMap = () => {
     dispatch(
       saveShipping({
-        address, estate, postalCode, phonenumber,
+        address, estate,
         lat,
         lng,
       })
     );
     props.history.push('/map');
   };
-  
   return <div>
     <CheckoutSteps step1 step2 ></CheckoutSteps>
     <div className="form">
@@ -101,7 +88,6 @@ const userSignin = useSelector((state) => state.userSignin);
             Choose On Map
           </button>
         </div>
-        
           <label />
 
           <li>
