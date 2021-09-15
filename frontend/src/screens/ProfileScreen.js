@@ -9,7 +9,7 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [orders,setOrders]=useState([]);
+  
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -26,10 +26,10 @@ function ProfileScreen(props) {
   const userUpdate = useSelector(state => state.userUpdate);
   const { loading, success, error } = userUpdate;
 
-  const listMyOrders = useSelector(state => state.listMyOrders);
-  
-  console.log(listMyOrders)
-  const { loading: loadingOrders,error: errorOrders, } = listMyOrders;
+  const myOrderList = useSelector(state => state.myOrderList);
+  const { orders } = myOrderList;
+  console.log(myOrderList)
+  const { loading: loadingOrders,error: errorOrders, } = myOrderList;
   
   useEffect(() => {
     if (userInfo) {
@@ -41,7 +41,7 @@ function ProfileScreen(props) {
     }
     dispatch(listMyOrders());
 return (res) => {
-      setOrders(res.data.myOrderList)
+      
     };
   }, [userInfo])
 
