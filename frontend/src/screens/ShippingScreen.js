@@ -7,10 +7,9 @@ function ShippingScreen(props) {
 const userSignin = useSelector((state) => state.userSignin);
 
   const { userInfo } = userSignin;
-  const cart = useSelector((state) => state.cart);
-  const { shippingAddress } = cart;
-  const [lat, setLat] = useState(shippingAddress.lat);
-  const [lng, setLng] = useState(shippingAddress.lng);
+  
+  const [lat, setLat] = useState('');
+  const [lng, setLng] = useState('');
   const userAddressMap = useSelector((state) => state.userAddressMap);
   const { address: addressMap } = userAddressMap;
   if (!userInfo) {
