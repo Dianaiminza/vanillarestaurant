@@ -100,7 +100,7 @@ function ProfileScreen(props) {
                 </tr>
               </thead>
               <tbody>
-                {myOrderList.map(order => (
+                {orders.map(order => (
                 <tr >
                   <td>{order._id}</td>
                   <td>{order.createdAt}</td>
