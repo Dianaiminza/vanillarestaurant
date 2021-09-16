@@ -4,18 +4,17 @@ import { saveShipping } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 
 function ShippingScreen(props) {
-
-  const [address, setAddress] = useState('');
-  const [estate, setEstate] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [phonenumber, setPhonenumber] = useState('');
+  const cart = useSelector((state) => state.cart);
+const { shipping } = cart;
+  const [address, setAddress] = useState(shipping.address);
+  const [estate, setEstate] = useState(shipping.estate);
+  const [postalCode, setPostalCode] = useState(shipping.postalcode);
+  const [phonenumber, setPhonenumber] = useState(shipping.phonenumber);
  const userSignin = useSelector((state) => state.userSignin);
 
   const { userInfo } = userSignin;
-  const cart = useSelector((state) => state.cart);
-  const { shippingAddress } = cart;
-  const [lat, setLat] = useState(shippingAddress.lat);
-  const [lng, setLng] = useState(shippingAddress.lng);
+  const [lat, setLat] = useState(shipping.lat);
+  const [lng, setLng] = useState(shipping.lng);
   const userAddressMap = useSelector((state) => state.userAddressMap);
   const { address: addressMap } = userAddressMap;
   if (!userInfo) {
