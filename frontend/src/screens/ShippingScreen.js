@@ -7,6 +7,8 @@ function ShippingScreen(props) {
   const cart = useSelector((state) => state.cart);
 const { shipping } = cart;
   const [address, setAddress] = useState(shipping.address);
+  const [city, setCity] = useState(shipping.city);
+  const [country, setCountry] = useState(shipping.country);
   const [estate, setEstate] = useState(shipping.estate);
   const [postalCode, setPostalCode] = useState(shipping.postalcode);
   const [phonenumber, setPhonenumber] = useState(shipping.phonenumber);
@@ -37,7 +39,9 @@ const { shipping } = cart;
       );
     }
     if (moveOn) {
-      dispatch(saveShipping({ address, estate, postalCode, phonenumber, lat: newLat,
+      dispatch(saveShipping({ address, estate, city,
+          postalCode,
+          country, phonenumber, lat: newLat,
           lng: newLng,}));
      
       props.history.push('/payment');
@@ -47,10 +51,10 @@ const { shipping } = cart;
    const chooseOnMap = () => {
     dispatch(
       saveShipping({
-        
+        city,
+          postalCode,
+          country,
         address,
-        
-        postalCode,
         
       })
     );
@@ -84,6 +88,20 @@ const { shipping } = cart;
               Postal Code
           </label>
             <input type="text" name="postalCode" id="postalCode" onChange={(e) => setPostalCode(e.target.value)}>
+            </input>
+          </li>
+           <li>
+            <label htmlFor="city">
+              City
+          </label>
+            <input type="text" name="city" id="city" onChange={(e) => setCity(e.target.value)}>
+            </input>
+          </li>
+           <li>
+            <label htmlFor="Country">
+              Country
+          </label>
+            <input type="text" name="country" id="country" onChange={(e) => setCountry(e.target.value)}>
             </input>
           </li>
           <li>
