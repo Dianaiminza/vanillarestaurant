@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import {  useDispatch } from 'react-redux';
+import {  useDispatch,useSelector } from 'react-redux';
 import { saveShipping } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 
@@ -9,14 +9,42 @@ function ShippingScreen(props) {
   const [estate, setEstate] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
+ const userSignin = useSelector((state) => state.userSignin);
 
+  const { userInfo } = userSignin;
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
+  const [lat, setLat] = useState(shippingAddress.lat);
+  const [lng, setLng] = useState(shippingAddress.lng);
+  const userAddressMap = useSelector((state) => state.userAddressMap);
+  const { address: addressMap } = userAddressMap;
+  if (!userInfo) {
+    props.history.push('/signin');
+  }
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShipping({ address, estate, postalCode, phonenumber}));
-    props.history.push('payment');
-  }
+     const newLat = addressMap ? addressMap.lat : lat;
+    const newLng = addressMap ? addressMap.lng : lng;
+    if (addressMap) {
+      setLat(addressMap.lat);
+      setLng(addressMap.lng);
+    }
+    let moveOn = true;
+    if (!newLat || !newLng) {
+      moveOn = window.confirm(
+        'You did not set your location on map. Continue?'
+      );
+    }
+    if (moveOn) {
+      dispatch(saveShipping({ address, estate, postalCode, phonenumber, lat: newLat,
+          lng: newLng,}));
+     
+      props.history.push('/payment');
+    }
+  };
+    
    const chooseOnMap = () => {
     dispatch(
       saveShipping({
