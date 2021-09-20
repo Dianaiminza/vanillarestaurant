@@ -6,8 +6,8 @@ import { listOrders, deleteOrder } from '../actions/orderActions';
 
 function OrdersScreen(props) {
   const orderList = useSelector((state) => state.orderList);
-  const [orders,setOrders ] = useState([]);
-  const { loading, error } = orderList;
+  // const [orders,setOrders ] = useState([]);
+  const { loading, error,orders} = orderList;
  
   const orderDelete = useSelector(state => state.orderDelete);
   const { loading: loadingDelete, success: successDelete, error: errorDelete } = orderDelete;
@@ -18,7 +18,7 @@ function OrdersScreen(props) {
     dispatch(listOrders());
     return (res) => {
      //
-      setOrders(res.data.order)
+     
     };
   }, [dispatch,successDelete]);
 
