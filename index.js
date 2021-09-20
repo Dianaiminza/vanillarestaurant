@@ -28,10 +28,10 @@ app.use('/api/orders', orderRoute);
 app.use(bodyParser.json());
 
 app.get('/api/config/paypal', (req, res) => {
-  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+  res.send(process.env.PAYPAL_CLIENT_ID || '');
 });
 app.get('/api/config/google', (req, res) => {
-  res.send(process.env.GOOGLE_API_KEY || 'AIzaSyA_o7FM2m9ZPRceHDT9EDgrVtFIslIQHQ8');
+  res.send(process.env.GOOGLE_API_KEY || '');
 });
 // app.use(express.static(path.join(__dirname, '//frontend/build')));
 // app.get('*', (req, res) => {
