@@ -1,28 +1,77 @@
-import React, { useEffect} from 'react';
+import React, { useEffect,useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {detailsOrder, payOrder } from '../actions/orderActions';
-
-import MpesaButton from '../components/PaypalButton';
+import {detailsOrder, payOrder ,deliverOrder} from '../actions/orderActions';
+import Axios from 'axios';
+import PaypalButton from '../components/PaypalButton';
+import {
+  ORDER_DELIVER_RESET,
+  ORDER_PAY_RESET,
+} from '../constants/orderConstants';
 function OrderScreen(props) {
+  const orderId = props.match.params.id;
+  const [sdkReady, setSdkReady] = useState(false);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const orderPay = useSelector(state => state.orderPay);
   // console.log(orderPay);
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
-  
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const {
+    loading: loadingDeliver,
+    error: errorDeliver,
+    success: successDeliver,
+  } = orderDeliver;
   const dispatch = useDispatch();
   useEffect(() => {
-    if (successPay) {
-      props.history.push("/profile");
+    const addPayPalScript = async () => {
+      const { data } = await Axios.get('/api/config/paypal');
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
+      script.async = true;
+      script.onload = () => {
+        setSdkReady(true);
+      };
+      document.body.appendChild(script);
+    };
+    if (
+      !order ||
+      successPay ||
+      successDeliver ||
+      (order && order._id !== orderId)
+    ) {
+      dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
+      dispatch(detailsOrder(orderId));
     } else {
-      dispatch(detailsOrder(props.match.params.id));
+      if (!order.isPaid) {
+        if (!window.paypal) {
+          addPayPalScript();
+        } else {
+          setSdkReady(true);
+        }
+      }
     }
-    
-  }, [successPay]);
-
-  const handleSuccessPayment = (paymentResult) => {
+  }, [dispatch, orderId, sdkReady, successPay, successDeliver, order]);
+  const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));
-  }
+  };
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order._id));
+  };
+  //   if (successPay) {
+  //     props.history.push("/profile");
+  //   } else {
+  //     dispatch(detailsOrder(props.match.params.id));
+  //   }
+    
+  // }, [successPay]);
+
+  // const handleSuccessPayment = (paymentResult) => {
+  //   dispatch(payOrder(order, paymentResult));
+  // }
   
   const orderDetails = useSelector(state => state.detailsOrder);
   
@@ -31,6 +80,7 @@ function OrderScreen(props) {
 
   return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
     <div>
+      <h1>Order {order._id}</h1>
       <div className="placeorder">
         <div className="placeorder-info">
           <div>
@@ -104,9 +154,9 @@ function OrderScreen(props) {
             <li className="placeorder-actions-payment">
               {loadingPay && <div>Finishing Payment...</div>}
               {!order.isPaid &&
-                <MpesaButton
+                <PaypalButton
                   amount={order.totalPrice}
-                  onSuccess={handleSuccessPayment} />
+                  onSuccess={successPaymentHandler} />
               }
             </li>
             <li>
@@ -128,6 +178,19 @@ function OrderScreen(props) {
               <div>Order Total</div>
               <div>Ksh{order.totalPrice}</div>
             </li>
+            {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                <li>
+                 <div>Loading ...</div> : error ? <div>{error}</div>
+                  
+                  <button
+                    type="button"
+                    className="primary block"
+                    onClick={deliverHandler}
+                  >
+                    Deliver Order
+                  </button>
+                </li>
+              )}
           </ul>
 
         </div>
