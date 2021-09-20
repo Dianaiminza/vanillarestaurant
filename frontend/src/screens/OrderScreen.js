@@ -13,14 +13,15 @@ function OrderScreen(props) {
   const [sdkReady, setSdkReady] = useState(false);
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-
+  const orderDetails = useSelector((state) => state.orderDetails);
+  const { order, loading, error } = orderDetails;
   const orderPay = useSelector(state => state.orderPay);
   // console.log(orderPay);
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
-  const orderDeliver = useSelector((state) => state.orderDeliver);
-  const {
-    success: successDeliver,
-  } = orderDeliver;
+  // const orderDeliver = useSelector((state) => state.orderDeliver);
+  // const {
+  //   success: successDeliver,
+  // } = orderDeliver;
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
