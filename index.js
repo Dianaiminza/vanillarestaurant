@@ -31,7 +31,7 @@ app.get('/api/config/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
 app.get('/api/config/google', (req, res) => {
-  res.send(process.env.GOOGLE_API_KEY || 'AlzaSyBzgf92BmjPmjPGhijLEC_gJOx3joMU');
+  res.send(process.env.GOOGLE_API_KEY || 'AlzaSyCj1vbd6BXIX_eXP7hegn2pMgG934loRLL4');
 });
 // app.use(express.static(path.join(__dirname, '//frontend/build')));
 // app.get('*', (req, res) => {

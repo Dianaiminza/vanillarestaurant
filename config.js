@@ -7,7 +7,7 @@ module.exports={
   MONGODB_URL: process.env.MONGODB_URL || 'mongodb+srv://dbUser:Captain@cluster0.w11hf.mongodb.net/food?retryWrites=true&w=majority',
   JWT_SECRET: process.env.JWT_SECRET || 'captain',
   PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID || 'sb',
-  GOOGLE_API_KEY:process.env.GOOGLE_API_KEY || 'AlzaSyBzgf92BmjPmjPGhijLEC_gJOx3joMU',
+  GOOGLE_API_KEY:process.env.GOOGLE_API_KEY || 'AlzaSyCj1vbd6BXIX_eXP7hegn2pMgG934loRLL4',
   accessKeyId: process.env.accessKeyId || 'accessKeyId',
   secretAccessKey: process.env.secretAccessKey || 'secretAccessKey',
 

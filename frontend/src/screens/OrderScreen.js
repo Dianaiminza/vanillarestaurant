@@ -19,8 +19,6 @@ function OrderScreen(props) {
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
   const orderDeliver = useSelector((state) => state.orderDeliver);
   const {
-    loading: loadingDeliver,
-    error: errorDeliver,
     success: successDeliver,
   } = orderDeliver;
   const dispatch = useDispatch();
