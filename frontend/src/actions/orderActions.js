@@ -23,7 +23,7 @@ const createOrder = (order) => async (dispatch, getState) => {
 
 const listMyOrders = (orders) => async (dispatch, getState) => {
   try {
-    dispatch({ type: MY_ORDER_LIST_REQUEST });
+    dispatch({ type: MY_ORDER_LIST_REQUEST,payload: orders});
     const { userSignin: { userInfo } } = getState();
     const { data } = await Axios.get("/api/orders/mine", {
       headers:
@@ -35,10 +35,10 @@ const listMyOrders = (orders) => async (dispatch, getState) => {
   }
 }
 
-const listOrders = (order) => async (dispatch, getState) => {
+const listOrders = (orders) => async (dispatch, getState) => {
 
   try {
-    dispatch({ type: ORDER_LIST_REQUEST });
+    dispatch({ type: ORDER_LIST_REQUEST,payload: orders });
     const { userSignin: { userInfo } } = getState();
     const { data } = await Axios.get("/api/orders", {
       headers:
