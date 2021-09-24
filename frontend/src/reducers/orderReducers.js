@@ -29,7 +29,7 @@ import {
       default: return state;
     }
   }
-  function orderDetailsReducer(state ={}, action) {
+  function orderDetailsReducer(state = { loading: true }, action) {
     switch (action.type) {
       case ORDER_DETAILS_REQUEST:
         return { loading: true };
@@ -40,7 +40,7 @@ import {
       default: return state;
     }
   }
-  function myOrderListReducer(state = {}, action) {
+  function myOrderListReducer(state = { orders: [] }, action) {
     switch (action.type) {
       case MY_ORDER_LIST_REQUEST:
         return { loading: true };
@@ -51,7 +51,7 @@ import {
       default: return state;
     }
   }
-  function orderListReducer(state = {}, action) {
+  function orderListReducer(state = { orders: [] }, action) {
     switch (action.type) {
       case ORDER_LIST_REQUEST:
         return { loading: true };
