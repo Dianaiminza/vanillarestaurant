@@ -36,7 +36,7 @@ function PlaceOrderScreen(props) {
       props.history.push("/order/" + order._id);
     }
 
-  });
+  }, [success]);
 
   return <div>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
