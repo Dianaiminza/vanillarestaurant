@@ -25,7 +25,7 @@ const listMyOrders = () => async (dispatch, getState) => {
   try {
     dispatch({ type: MY_ORDER_LIST_REQUEST });
     const { userSignin: { userInfo } } = getState();
-    const { data } = await Axios.get("/api/orders/mine", {
+    const { data } = await Axios.get("/api/orders/mine",{
       headers:
         { Authorization: 'Bearer ' + userInfo.token }
     });

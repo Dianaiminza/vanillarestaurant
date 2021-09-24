@@ -18,7 +18,13 @@ import {
       default: return state;
     }
   }
-  function orderPayReducer(state = {}, action) {
+  function orderPayReducer(state = {
+    order: {
+      orderItems: [],
+      shipping: {},
+      payment: {}
+    }
+  }, action) {
     switch (action.type) {
       case ORDER_PAY_REQUEST:
         return { loading: true };
@@ -29,7 +35,13 @@ import {
       default: return state;
     }
   }
-  function orderDetailsReducer(state = { loading: true }, action) {
+  function orderDetailsReducer(state = {
+    order: {
+      orderItems: [],
+      shipping: {},
+      payment: {}
+    }
+  }, action) {
     switch (action.type) {
       case ORDER_DETAILS_REQUEST:
         return { loading: true };
@@ -45,7 +57,7 @@ import {
       case MY_ORDER_LIST_REQUEST:
         return { loading: true };
       case MY_ORDER_LIST_SUCCESS:
-        return { loading: false, order: action.payload, success: true };
+        return { loading: false, orders: action.payload, success: true };
       case MY_ORDER_LIST_FAIL:
         return { loading: false, error: action.payload };
       default: return state;
@@ -56,13 +68,19 @@ import {
       case ORDER_LIST_REQUEST:
         return { loading: true };
       case ORDER_LIST_SUCCESS:
-        return { loading: false, order: action.payload, success: true };
+        return { loading: false, orders: action.payload, success: true };
       case ORDER_LIST_FAIL:
         return { loading: false, error: action.payload };
       default: return state;
     }
   }
-  function  orderDeleteReducer(state = {}, action) {
+  function  orderDeleteReducer(state = {
+    order: {
+      orderItems: [],
+      shipping: {},
+      payment: {}
+    }
+  }, action) {
     switch (action.type) {
       case ORDER_DELETE_REQUEST:
         return { loading: true };
