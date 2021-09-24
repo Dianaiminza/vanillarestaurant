@@ -7,10 +7,9 @@ function OrdersScreen(props) {
   const orderList = useSelector(state => state.orderList);
   const { loading, orders, error } = orderList;
 
-  
   const orderDelete = useSelector(state => state.orderDelete);
   const { loading: loadingDelete, success: successDelete, error: errorDelete } = orderDelete;
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {

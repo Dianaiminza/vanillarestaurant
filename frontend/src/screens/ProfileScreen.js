@@ -8,12 +8,10 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
- 
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
-  
   const handleLogout = () => {
     dispatch(logout());
     props.history.push("/signin");
@@ -26,21 +24,17 @@ function ProfileScreen(props) {
   const { loading, success, error } = userUpdate;
 
   const myOrderList = useSelector(state => state.myOrderList);
-  console.log(myOrderList)
   const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
-  
   useEffect(() => {
     if (userInfo) {
       console.log(userInfo.name)
       setEmail(userInfo.email);
       setName(userInfo.name);
       setPassword(userInfo.password);
-      
-       
     }
     dispatch(listMyOrders());
     return () => {
-  
+
     };
   }, [userInfo])
 
@@ -103,8 +97,7 @@ function ProfileScreen(props) {
                 </tr>
               </thead>
               <tbody>
-                {orders.map(order => (
-                <tr >
+                {orders.map(order => <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.createdAt}</td>
                   <td>{order.totalPrice}</td>
@@ -112,7 +105,7 @@ function ProfileScreen(props) {
                   <td>
                     <Link to={"/order/" + order._id}>DETAILS</Link>
                   </td>
-                </tr>))}
+                </tr>)}
               </tbody>
             </table>
       }
