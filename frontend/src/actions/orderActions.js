@@ -21,11 +21,11 @@ const createOrder = (order) => async (dispatch, getState) => {
   }
 }
 
-const listMyOrders = (orders) => async (dispatch, getState) => {
+const listMyOrders = () => async (dispatch, getState) => {
   try {
-    dispatch({ type: MY_ORDER_LIST_REQUEST,payload: orders });
+    dispatch({ type: MY_ORDER_LIST_REQUEST });
     const { userSignin: { userInfo } } = getState();
-    const { data } = await Axios.get("/api/orders/mine",orders, {
+    const { data } = await Axios.get("/api/orders/mine", {
       headers:
         { Authorization: 'Bearer ' + userInfo.token }
     });
@@ -35,12 +35,12 @@ const listMyOrders = (orders) => async (dispatch, getState) => {
   }
 }
 
-const listOrders = (orders) => async (dispatch, getState) => {
+const listOrders = () => async (dispatch, getState) => {
 
   try {
-    dispatch({ type: ORDER_LIST_REQUEST ,payload: orders});
+    dispatch({ type: ORDER_LIST_REQUEST });
     const { userSignin: { userInfo } } = getState();
-    const { data } = await Axios.get("/api/orders",orders, {
+    const { data } = await Axios.get("/api/orders", {
       headers:
         { Authorization: 'Bearer ' + userInfo.token }
     });
