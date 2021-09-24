@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { listOrders, deleteOrder } from '../actions/orderActions';
 
-
 function OrdersScreen(props) {
-  const orderList = useSelector((state) => state.orderList);
-  // const [orders,setOrders ] = useState([]);
-  const { loading, error,orders} = orderList;
- 
+  const orderList = useSelector(state => state.orderList);
+  const { loading,  error } = orderList;
+  const [orders]=useState([]);
   const orderDelete = useSelector(state => state.orderDelete);
   const { loading: loadingDelete, success: successDelete, error: errorDelete } = orderDelete;
   
@@ -16,17 +14,14 @@ function OrdersScreen(props) {
 
   useEffect(() => {
     dispatch(listOrders());
-    return (res) => {
-     //
-     
+    return () => {
+      //
     };
-  }, [dispatch,successDelete]);
+  }, [successDelete]);
+
   const deleteHandler = (order) => {
-    if (window.confirm('Are you sure to delete?')) {
-      dispatch(deleteOrder(order._id));
-    }
+    dispatch(deleteOrder(order._id));
   }
- 
   return loading ? <div>Loading...</div> :
     <div className="content content-margined">
 
@@ -55,24 +50,13 @@ function OrdersScreen(props) {
               <td>{order.createdAt}</td>
               <td>{order.totalPrice}</td>
               <td>{order.user.name}</td>
-             <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+              <td>{order.isPaid.toString()}</td>
               <td>{order.paidAt}</td>
-             <td>
-                  {order.isDelivered
-                    ? order.deliveredAt.substring(0, 10)
-                    : 'No'}
-                </td>
+              <td>{order.isDelivered.toString()}</td>
               <td>{order.deliveredAt}</td>
               <td>
-              <button
-                    type="button"
-                    className="small"
-                    onClick={() => {
-                      props.history.push(`/order/${order._id}`);
-                    }}
-                  >
-                    Details
-                  </button>
+                <Link to={"/order/" + order._id} className="button secondary" >Details</Link>
+                {' '}
                 <button type="button" onClick={() => deleteHandler(order)} className="button secondary">Delete</button>
               </td>
             </tr>))}
@@ -82,5 +66,4 @@ function OrdersScreen(props) {
       </div>
     </div>
 }
-
 export default OrdersScreen;
