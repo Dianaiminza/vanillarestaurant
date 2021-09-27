@@ -32,11 +32,12 @@ function ProfileScreen(props) {
       setName(userInfo.name);
       setPassword(userInfo.password);
     }
+    
     dispatch(listMyOrders());
     return () => {
-
+//
     };
-  }, [userInfo])
+  }, [dispatch]);
 
   return <div className="profile">
     <div className="profile-info">
@@ -99,12 +100,25 @@ function ProfileScreen(props) {
               <tbody>
                 {orders.map(order => <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.createdAt}</td>
+                  <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice}</td>
-                  <td>{order.isPaid}</td>
+                  <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
                   <td>
-                    <Link to={"/order/" + order._id}>DETAILS</Link>
-                  </td>
+                  {order.isDelivered
+                    ? order.deliveredAt.substring(0, 10)
+                    : 'No'}
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    className="small"
+                    onClick={() => {
+                      props.history.push(`/order/${order._id}`);
+                    }}
+                  >
+                    Details
+                  </button>
+                </td>
                 </tr>)}
               </tbody>
             </table>

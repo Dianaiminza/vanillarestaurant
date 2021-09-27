@@ -20,7 +20,9 @@ function OrdersScreen(props) {
   }, [successDelete]);
 
   const deleteHandler = (order) => {
-    dispatch(deleteOrder(order._id));
+    if (window.confirm('Are you sure to delete?')) {
+      dispatch(deleteOrder(order._id));
+    }
   }
   return loading ? <div>Loading...</div> :
     <div className="content content-margined">
@@ -47,16 +49,25 @@ function OrdersScreen(props) {
           <tbody>
             {orders.map(order => (<tr key={order._id}>
               <td>{order._id}</td>
-              <td>{order.createdAt}</td>
+              <td>{order.createdAt.substring(0, 10)}</td>
               <td>{order.totalPrice}</td>
               <td>{order.user.name}</td>
-              <td>{order.isPaid.toString()}</td>
+              <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
               <td>{order.paidAt}</td>
-              <td>{order.isDelivered.toString()}</td>
+              <td> {order.isDelivered
+                    ? order.deliveredAt.substring(0, 10)
+                    : 'No'}</td>
               <td>{order.deliveredAt}</td>
               <td>
-                <Link to={"/order/" + order._id} className="button secondary" >Details</Link>
-                {' '}
+              <button
+                    type="button"
+                    className="small"
+                    onClick={() => {
+                      props.history.push(`/order/${order._id}`);
+                    }}
+                  >
+                    Details
+                  </button>
                 <button type="button" onClick={() => deleteHandler(order)} className="button secondary">Delete</button>
               </td>
             </tr>))}

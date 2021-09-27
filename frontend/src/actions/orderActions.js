@@ -29,7 +29,7 @@ const listMyOrders = () => async (dispatch, getState) => {
       headers:
         { Authorization: 'Bearer ' + userInfo.token }
     });
-    dispatch({ type: MY_ORDER_LIST_SUCCESS, payload: data.orders })
+    dispatch({ type: MY_ORDER_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: MY_ORDER_LIST_FAIL, payload: error.message });
   }
@@ -44,7 +44,7 @@ const listOrders = () => async (dispatch, getState) => {
       headers:
         { Authorization: 'Bearer ' + userInfo.token }
     });
-    dispatch({ type: ORDER_LIST_SUCCESS, payload: data.orders })
+    dispatch({ type: ORDER_LIST_SUCCESS, payload: data})
   } catch (error) {
     dispatch({ type: ORDER_LIST_FAIL, payload: error.message });
   }
