@@ -31,7 +31,7 @@ router.delete("/:id", isAuth, isAdmin, async (req, res) => {
 });
 
 router.post("/", isAuth, async (req, res) => {
-  const newOrder = new Order({
+  const order = new Order({
     orderItems: req.body.orderItems,
     user: req.user._id,
     shipping: req.body.shipping,
@@ -41,8 +41,8 @@ router.post("/", isAuth, async (req, res) => {
     shippingPrice: req.body.shippingPrice,
     totalPrice: req.body.totalPrice,
   });
-  const newOrderCreated = await newOrder.save();
-  res.status(201).send({ message: "New Order Created", data: newOrderCreated });
+  const newOrderCreated = await order.save();
+  res.status(201).send({ message: "New Order Created", order: newOrderCreated });
 });
 
 router.put("/:id/pay", isAuth, async (req, res) => {
