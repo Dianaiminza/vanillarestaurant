@@ -59,15 +59,8 @@ function OrdersScreen(props) {
                     : 'No'}</td>
               <td>{order.deliveredAt}</td>
               <td>
-              <button
-                    type="button"
-                    className="small"
-                    onClick={() => {
-                      props.history.push(`/order/${order._id}`);
-                    }}
-                  >
-                    Details
-                  </button>
+                <Link to={"/order/" + order._id} className="button secondary" >Details</Link>
+                {' '}
                 <button type="button" onClick={() => deleteHandler(order)} className="button secondary">Delete</button>
               </td>
             </tr>))}
