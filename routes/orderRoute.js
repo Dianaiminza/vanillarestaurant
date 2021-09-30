@@ -7,6 +7,7 @@ var  Product =require('../models/productModel.js');
 var { isAuth, isAdmin } =require('../util');
 
 var router=express.Router();
+
 router.get("/", isAuth, async (req, res) => {
   const orders = await Order.find({}).populate('user');
   res.send(orders);
@@ -35,18 +36,16 @@ router.delete("/:id", isAuth, isAdmin, async (req, res) => {
   }
 });
 router.get(
-  '/summary',
+  "/summary",
   isAuth,
   isAdmin,
-async (req, res) => {
-  
+  expressAsyncHandler(async (req, res) => {
     const orders = await Order.aggregate([
-
       {
         $group: {
           _id: null,
           numOrders: { $sum: 1 },
-          totalSales: { $sum: 'Ksh totalPrice' },
+          totalSales: { $sum: '$totalPrice' },
         },
       },
     ]);
@@ -76,9 +75,9 @@ async (req, res) => {
         },
       },
     ]);
-    
     res.send({ users, orders, dailyOrders, productCategories });
   })
+);
 
 router.post("/", isAuth, async (req, res) => {
   const newOrder = new Order({
