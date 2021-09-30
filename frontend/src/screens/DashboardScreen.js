@@ -7,12 +7,13 @@ import MessageBox from '../components/MessageBox';
 
 export default function DashboardScreen() {
   const orderSummary = useSelector((state) => state.orderSummary);
-  const {  summary, error } = orderSummary;
+  const { loading, summary, error } = orderSummary;
+  console.log(orderSummary);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(summaryOrder());
   }, [dispatch]);
-   return  
+   return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
     <div>
       <div className="row">
         <h1>Dashboard</h1>
@@ -88,7 +89,7 @@ export default function DashboardScreen() {
             )}
           </div>
         </>
-      )}
+      )
     </div>
  
 }
