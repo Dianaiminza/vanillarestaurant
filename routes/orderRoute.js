@@ -45,7 +45,7 @@ router.get(
         $group: {
           _id: req.params.id,
           numOrders: { $sum: 1 },
-          totalSales: { $sum: 'Ksh totalPrice' },
+          totalSales: { $sum:'$totalPrice' },
         },
       },
     ]);
@@ -62,7 +62,7 @@ router.get(
         $group: {
           _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
           orders: { $sum: 1 },
-          sales: { $sum: 'Ksh totalPrice' },
+          sales: { $sum: '$totalPrice' },
         },
       },
       { $sort: { _id: 1 } },
