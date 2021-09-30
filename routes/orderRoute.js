@@ -1,7 +1,9 @@
 var express =require ('express');
+
 var  expressAsyncHandler =require('express-async-handler');
 var  Order =require ('../models/orderModel');
 var { isAuth, isAdmin } =require('../util');
+
 var router=express.Router();
 router.get("/", isAuth, async (req, res) => {
   const orders = await Order.find({}).populate('user');
@@ -34,13 +36,15 @@ router.get(
   '/summary',
   isAuth,
   isAdmin,
-  expressAsyncHandler(async (req, res) => {
+async (req, res) => {
+  
     const orders = await Order.aggregate([
+
       {
         $group: {
           _id: null,
           numOrders: { $sum: 1 },
-          totalSales: { $sum: 'KshtotalPrice' },
+          totalSales: { $sum: 'Ksh totalPrice' },
         },
       },
     ]);
@@ -70,9 +74,9 @@ router.get(
         },
       },
     ]);
+    
     res.send({ users, orders, dailyOrders, productCategories });
   })
-);
 
 router.post("/", isAuth, async (req, res) => {
   const newOrder = new Order({
