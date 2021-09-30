@@ -12,7 +12,7 @@ export default function DashboardScreen() {
   useEffect(() => {
     dispatch(summaryOrder());
   }, [dispatch]);
-   return  <div>Loading ...</div> : error ? <div>{error}</div> :
+   return  
     <div>
       <div className="row">
         <h1>Dashboard</h1>
