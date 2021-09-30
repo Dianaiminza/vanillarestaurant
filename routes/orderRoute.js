@@ -2,6 +2,8 @@ var express =require ('express');
 
 var  expressAsyncHandler =require('express-async-handler');
 var  Order =require ('../models/orderModel');
+var User =require ('../models/userModel.js');
+var  Product =require('../models/productModel.js');
 var { isAuth, isAdmin } =require('../util');
 
 var router=express.Router();
