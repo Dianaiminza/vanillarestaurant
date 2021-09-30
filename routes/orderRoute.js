@@ -36,23 +36,23 @@ router.delete("/:id", isAuth, isAdmin, async (req, res) => {
   }
 });
 router.get(
-  "/summary",
+  "/summary/:id",
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
     const orders = await Order.aggregate([
       {
         $group: {
-          _id: null,
+          _id: req.params.id,
           numOrders: { $sum: 1 },
-          totalSales: { $sum: '$totalPrice' },
+          totalSales: { $sum: 'Ksh totalPrice' },
         },
       },
     ]);
     const users = await User.aggregate([
       {
         $group: {
-          _id: null,
+          _id: req.user._id,
           numUsers: { $sum: 1 },
         },
       },
@@ -62,7 +62,7 @@ router.get(
         $group: {
           _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
           orders: { $sum: 1 },
-          sales: { $sum: '$totalPrice' },
+          sales: { $sum: 'Ksh totalPrice' },
         },
       },
       { $sort: { _id: 1 } },
