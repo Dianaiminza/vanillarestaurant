@@ -107,7 +107,7 @@ router.put("/:id/pay", isAuth, async (req, res) => {
     res.status(404).send({ message: 'Order not found.' })
   }
 });
-orderRouter.put(
+router.put(
   '/:id/deliver',
   isAuth,
   isAdmin,
