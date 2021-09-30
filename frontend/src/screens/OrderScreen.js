@@ -17,9 +17,11 @@ function OrderScreen(props) {
  
   const orderPay = useSelector(state => state.orderPay);
   // console.log(orderPay);
-  const { loading: loadingPay, error: errorPay } = orderPay;
+  const { loading: loadingPay,success: successPay, error: errorPay } = orderPay;
   const orderDeliver = useSelector((state) => state.orderDeliver);
-  
+  const {
+    success: successDeliver,
+  } = orderDeliver;
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
