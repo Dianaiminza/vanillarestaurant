@@ -33,7 +33,7 @@ function PlaceOrderScreen(props) {
   }
   useEffect(() => {
     if (success) {
-      props.history.push("/order/" + order._id);
+       props.history.push(`/order/${order._id}`);
     }
 
   }, [dispatch,order,props.history,success]);
