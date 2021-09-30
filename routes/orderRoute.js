@@ -1,4 +1,5 @@
 var express =require ('express');
+var  expressAsyncHandler =require('express-async-handler');
 var  Order =require ('../models/orderModel');
 var { isAuth, isAdmin } =require('../util');
 var router=express.Router();
@@ -29,7 +30,7 @@ router.delete("/:id", isAuth, isAdmin, async (req, res) => {
     res.status(404).send("Order Not Found.")
   }
 });
-orderRouter.get(
+router.get(
   '/summary',
   isAuth,
   isAdmin,
