@@ -17,6 +17,10 @@ import OrdersScreen from './screens/OrdersScreen';
 import  FooterScreen from './screens/FooterScreen';
 import MapScreen from './screens/MapScreen';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
+import SupportScreen from './screens/SupportScreen';
+import ChatBox from './components/ChatBox';
+import DashboardScreen from './screens/DashboardScreen';
 function App() {
   const cart = useSelector((state) => state.cart);
   const userSignin = useSelector((state) => state.userSignin);
@@ -52,6 +56,12 @@ const { cartItems } = cart;
                   <li>
                     <Link to="/orders">Orders</Link>
                     <Link to="/products">Products</Link>
+                     <li>
+                    <Link to="/support">Support</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
                   </li>
                 </ul>
               </div>
@@ -95,6 +105,11 @@ const { cartItems } = cart;
             <Route path="/category/:id" component={HomeScreen}/>
             <Route path="/" exact={true} component={HomeScreen}/>
              <PrivateRoute path="/map" component={MapScreen}></PrivateRoute>
+             <AdminRoute
+            path="/dashboard"
+            component={DashboardScreen}
+          ></AdminRoute>
+          <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
           </div>
         </main>
         <FooterScreen/>
