@@ -1,7 +1,7 @@
 import React, { useEffect,useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {detailsOrder, payOrder ,deliverOrder} from '../actions/orderActions';
+import {detailsOrder, payOrder ,deliverOrder,createOrder} from '../actions/orderActions';
 import Axios from 'axios';
 import PaypalButton from '../components/PaypalButton';
 import {
@@ -17,11 +17,9 @@ function OrderScreen(props) {
  
   const orderPay = useSelector(state => state.orderPay);
   // console.log(orderPay);
-  const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
+  const { loading: loadingPay, error: errorPay } = orderPay;
   const orderDeliver = useSelector((state) => state.orderDeliver);
-  const {
-    success: successDeliver,
-  } = orderDeliver;
+  
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
