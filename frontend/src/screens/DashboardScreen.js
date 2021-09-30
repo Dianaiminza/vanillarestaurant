@@ -12,17 +12,12 @@ export default function DashboardScreen() {
   useEffect(() => {
     dispatch(summaryOrder());
   }, [dispatch]);
-  return (
+   return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
     <div>
       <div className="row">
         <h1>Dashboard</h1>
       </div>
-      {loading ? (
-        <LoadingBox />
-      ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
-      ) : (
-        <>
+         <>
           <ul className="row summary">
             <li>
               <div className="summary-title color1">
@@ -95,5 +90,5 @@ export default function DashboardScreen() {
         </>
       )}
     </div>
-  );
+ 
 }
