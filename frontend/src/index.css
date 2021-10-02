@@ -461,6 +461,10 @@ tbody > tr:nth-child(odd) {
   justify-content: space-between;
   align-items: center;
 }
+.active {
+  font-weight: bold;
+}
+
 .filter input,
 .filter button,
 .filter select {
