@@ -35,7 +35,7 @@ app.get('/api/config/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
 app.get('/api/config/google', (req, res) => {
-  res.send(process.env.GOOGLE_API_KEY || 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA_o7FM2m9ZPRceHDT9EDgrVtFIslIQHQ8&q=senior+assisted+care+near+me&zoom=9');
+  res.send(process.env.GOOGLE_API_KEY || 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA_o7FM2m9ZPRceHDT9EDgrVtFIslIQHQ8');
 });
 // app.use(express.static(path.join(__dirname, '//frontend/build')));
 // app.get('*', (req, res) => {
