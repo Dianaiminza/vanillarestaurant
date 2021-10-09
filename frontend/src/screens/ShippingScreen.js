@@ -164,68 +164,60 @@ export default function ShippingScreen(props) {
   return (
     <div>
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Shipping Address</h1>
-        </div>
-        <div>
-          <label htmlFor="estate">Estate</label>
-          <input
-            type="text"
-            id="estate"
-            placeholder="Enter estate"
-            value={estate}
-            onChange={(e) => setEstate(e.target.value)}
-            required
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="address">Address</label>
-          <input
-            type="text"
-            id="address"
-            placeholder="Enter address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="phonenumber">Phone number</label>
-          <input
-            type="text"
-            id="phonenumber"
-            placeholder="Enter phonenumber"
-            value={phonenumber}
-            onChange={(e) => setPhonenumber(e.target.value)}
-            required
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="postalCode">Postal Code</label>
-          <input
-            type="text"
-            id="postalCode"
-            placeholder="Enter postal code"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
-            required
-          ></input>
-        </div>
+      <div className="form">
+      <form onSubmit={submitHandler} >
+         <ul className="form-container">
+          <li>
+            <h2>Shipping</h2>
+           </li>
+
+           <li>
+            <label htmlFor="address">
+              Address
+           </label>
+             <input type="text" name="address" id="address" onChange={(e) => setAddress(e.target.value)}>
+             </input>
+           </li>
+          <li>
+             <label htmlFor="estate">
+               Estate
+         </label>
+            <input type="text" name="estate" id="estate" onChange={(e) => setEstate(e.target.value)}>
+           </input>
+         </li>
+         <li>
+          <label htmlFor="postalCode">
+              Postal Code
+          </label>
+            <input type="text" name="postalCode" id="postalCode" onChange={(e) => setPostalCode(e.target.value)}>
+             </input>
+          </li>
+           
+           
+          <li>
+<label htmlFor="phonenumber">
+               Phone number
+         </label>
+            <input type="text" name="phonenumber" id="phonenumber" onChange={(e) => setPhonenumber(e.target.value)}>
+             </input>
+           </li>
+ <div>
         
-        <div>
-          <label htmlFor="chooseOnMap">Location</label>
-          <button type="button" onClick={chooseOnMap}>
-            Choose On Map
-          </button>
-        </div>
-        <div>
+         </div>
           <label />
-          <button className="primary" type="submit">
-            Continue
-          </button>
-        </div>
-      </form>
+  <div>
+          <label htmlFor="chooseOnMap">Location</label>
+           <button type="button" onClick={chooseOnMap}>
+             Choose On Map
+           </button>
+         </div>
+           <li>
+             <button type="submit" className="button primary">Continue</button>
+           </li>
+
+         </ul>
+       </form>
     </div>
+  </div>
   );
 }
