@@ -108,6 +108,6 @@ export default function ShippingScreen(props) {
       </form>
     </div>
   </div>
-
+ );
 }
  
