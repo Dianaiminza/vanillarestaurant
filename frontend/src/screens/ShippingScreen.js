@@ -44,7 +44,6 @@ function ShippingScreen(props) {
   }
     const chooseOnMap = () => {
     dispatch(
-      saveShipping({  address, estate, postalCode })
       saveShipping({
         address, postalCode, estate,phonenumber,lat: newLat,
           lng: newLng,
