@@ -104,7 +104,7 @@ const { cartItems } = cart;
             <Route path="/cart/:id?" component={CartScreen}/>
             <Route path="/category/:id" component={HomeScreen}/>
             <Route path="/" exact={true} component={HomeScreen}/>
-             <PrivateRoute path="/map" component={MapScreen}></PrivateRoute>
+             <Route path="/map" component={MapScreen}/>
              <AdminRoute
             path="/dashboard"
             component={DashboardScreen}
