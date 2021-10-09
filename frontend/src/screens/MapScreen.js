@@ -77,7 +77,7 @@ export default function MapScreen(props) {
 
   const getUserCurrentLocation = () => {
     if (!navigator.geolocation) {
-      alert('Geolocation os not supported by this browser');
+      alert('Geolocation is not supported by this browser');
     } else {
       navigator.geolocation.getCurrentPosition((position) => {
         setCenter({
