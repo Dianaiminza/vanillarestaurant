@@ -13,19 +13,45 @@ function ShippingScreen(props) {
  
 
  
-  // const [lat, setLat] = useState(shipping.lat);
-  // const [lng, setLng] = useState(shipping.lng);
-  // const userAddressMap = useSelector((state) => state.userAddressMap);
-  // const { address: addressMap } = userAddressMap;
+  const [lat, setLat] = useState(shipping.lat);
+  const [lng, setLng] = useState(shipping.lng);
+  const userAddressMap = useSelector((state) => state.userAddressMap);
+  const { address: addressMap } = userAddressMap;
   
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShipping({ address, postalCode, estate,phonenumber }));
-    props.history.push('/payment');
+     const newLat = addressMap ? addressMap.lat : lat;
+    const newLng = addressMap ? addressMap.lng : lng;
+    if (addressMap) {
+      setLat(addressMap.lat);
+      setLng(addressMap.lng);
+    }
+    let moveOn = true;
+    if (!newLat || !newLng) {
+      moveOn = window.confirm(
+        'You did not set your location on map. Continue?'
+      );
+    }
+    if (moveOn) {
+      dispatch(saveShipping({ address, postalCode, estate,phonenumber,lat: newLat,
+          lng: newLng,}));
+      props.history.push('/payment');
+    }
+    
+    
   }
-   
+    const chooseOnMap = () => {
+    dispatch(
+      saveShipping({  address, estate, postalCode })
+      saveShipping({
+        address, postalCode, estate,phonenumber,lat: newLat,
+          lng: newLng,
+      })
+    );
+    props.history.push('/payment');
+    props.history.push('/map');
   return <div>
     <CheckoutSteps step1 step2 ></CheckoutSteps>
     <div className="form">
@@ -69,7 +95,12 @@ function ShippingScreen(props) {
         
         </div>
           <label />
-
+ <div>
+          <label htmlFor="chooseOnMap">Location</label>
+          <button type="button" onClick={chooseOnMap}>
+            Choose On Map
+          </button>
+        </div>
           <li>
             <button type="submit" className="button primary">Continue</button>
           </li>

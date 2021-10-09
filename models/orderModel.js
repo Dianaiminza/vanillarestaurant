@@ -5,6 +5,8 @@ const shippingSchema = {
   estate: { type: String },
   postalCode: { type: String },
   phonenumber: { type: String },
+  lat: Number,
+      lng: Number,
   
 };
 
