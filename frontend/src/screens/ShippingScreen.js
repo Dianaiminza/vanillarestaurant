@@ -156,8 +156,8 @@ export default function ShippingScreen(props) {
     }
   };
   const chooseOnMap = () => {
-       dispatch(saveShipping({ address, postalCode, estate,phonenumber,lat: newLat,
-    lng: newLng,}));
+       dispatch(saveShipping({ address, postalCode, estate,phonenumber,lat,
+        lng,}));
     
     props.history.push('/map');
   };
@@ -174,7 +174,7 @@ export default function ShippingScreen(props) {
             type="text"
             id="estate"
             placeholder="Enter estate"
-            value={fullName}
+            value={estate}
             onChange={(e) => setEstate(e.target.value)}
             required
           ></input>
