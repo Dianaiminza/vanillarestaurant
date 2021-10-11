@@ -18,9 +18,9 @@ export default function MapScreen(props) {
   const [center, setCenter] = useState(defaultLocation);
   const [location, setLocation] = useState(center);
 
-  const mapRef = useRef(null);
-  const placeRef = useRef(null);
-  const markerRef = useRef(null);
+  const mapRef = React.useRef();
+  const placeRef = useRef();
+  const markerRef = useRef();
 
   useEffect(() => {
     const fetch = async () => {
