@@ -114,11 +114,9 @@ const { cartItems } = cart;
         </main>
         <footer >
         <FooterScreen/>
+        <ChatBox/>
         </footer>
-        <footer className="row center">
-          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          
-        </footer>
+        
         
       </div>
     </BrowserRouter>
