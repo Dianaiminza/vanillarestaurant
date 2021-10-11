@@ -12,7 +12,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ChatBox from './components/ChatBox';
+import ChatBox from '../components/ChatBox';
 
 
 const Container = styled.div`
