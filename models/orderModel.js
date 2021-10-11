@@ -4,10 +4,10 @@ const orderSchema = new mongoose.Schema(
   {
     orderItems: [
       {
-        name: { type: String, required: true },
-        qty: { type: Number, required: true },
-        image: { type: String, required: true },
-        price: { type: Number, required: true },
+        name: { type: String},
+        qty: { type: Number},
+        image: { type: String },
+        price: { type: Number },
         product: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Product',
@@ -23,18 +23,18 @@ const orderSchema = new mongoose.Schema(
   lat: Number,
       lng: Number,
     },
-    paymentMethod: { type: String, required: true },
+    paymentMethod: { type: String },
     paymentResult: {
       id: String,
       status: String,
       update_time: String,
       email_address: String,
     },
-    itemsPrice: { type: Number, required: true },
-    shippingPrice: { type: Number, required: true },
-    taxPrice: { type: Number, required: true },
-    totalPrice: { type: Number, required: true },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    itemsPrice: { type: Number },
+    shippingPrice: { type: Number },
+    taxPrice: { type: Number},
+    totalPrice: { type: Number },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
