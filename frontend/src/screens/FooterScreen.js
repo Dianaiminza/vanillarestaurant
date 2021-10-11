@@ -11,6 +11,10 @@ import {
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import ChatBox from './components/ChatBox';
+
+
 const Container = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column" })}
@@ -87,6 +91,8 @@ const ContactItem = styled.div`
 
 
 const Footer = () => {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   return (
       <>
     <Container>
@@ -152,6 +158,10 @@ const Footer = () => {
         
         <a href="/" class="move-top">This Way Up</a>
 			<img src="//cdn.shopify.com/s/files/1/0015/1185/0042/t/14/assets/footer-icon.jpg?v=10449586777609619721" alt="Vanilla &amp; Restaurant" loading="lazy" importance="low"/> 
+      <footer className="row center">
+          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+          
+        </footer>
       </Right>
       
         
