@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   LoadScript,
-  useJsApiLoader,
   GoogleMap,
   StandaloneSearchBox,
   Marker,
@@ -15,21 +14,6 @@ const libs = ['places'];
 const defaultLocation = { lat: 45.516, lng: -73.56 };
 
 export default function MapScreen(props) {
-  
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyA_o7FM2m9ZPRceHDT9EDgrVtFIslIQHQ8"
-  })
-  const [map, setMap] = React.useState(null)
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
   const [googleApiKey, setGoogleApiKey] = useState('');
   const [center, setCenter] = useState(defaultLocation);
   const [location, setLocation] = useState(center);
@@ -37,21 +21,19 @@ export default function MapScreen(props) {
   const mapRef = useRef(null);
   const placeRef = useRef(null);
   const markerRef = useRef(null);
-  useEffect(()=>{
-    getUserCurrentLocation();
-  })
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     // const { data } = await Axios('/api/config/google');
-  //     // setGoogleApiKey(data);
-  //     getUserCurrentLocation();
-  //   };
-  //   fetch();
-  // }, []);
 
-  // const onLoad = (map) => {
-  //   mapRef.current = map;
-  // };
+  useEffect(() => {
+    const fetch = async () => {
+      const { data } = await Axios('/api/config/google');
+      setGoogleApiKey(data);
+      getUserCurrentLocation();
+    };
+    fetch();
+  }, []);
+
+  const onLoad = (map) => {
+    mapRef.current = map;
+  };
 
   const onMarkerLoad = (marker) => {
     markerRef.current = marker;
@@ -110,16 +92,15 @@ export default function MapScreen(props) {
     }
   };
 
-  return isLoaded ? (
+  return googleApiKey ? (
     <div className="full-container">
-      <LoadScript libraries={libs}>
+      <LoadScript libraries={libs} googleMapsApiKey={googleApiKey}>
         <GoogleMap
           id="smaple-map"
           mapContainerStyle={{ height: '100%', width: '100%' }}
           center={center}
           zoom={15}
           onLoad={onLoad}
-          onUnmount={onUnmount}
           onIdle={onIdle}
         >
           <StandaloneSearchBox
