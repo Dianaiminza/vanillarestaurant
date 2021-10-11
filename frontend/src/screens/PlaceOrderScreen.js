@@ -32,7 +32,7 @@ function PlaceOrderScreen(props) {
   }
   useEffect(() => {
     if (success) {
-      props.history.push(`/order/${order._id}`);
+      props.history.push(`/order/${_id}`);
       dispatch({ type: ORDER_CREATE_RESET });
     }
 
