@@ -40,8 +40,8 @@ export default function MapScreen(props) {
   
   useEffect(() => {
     const fetch = async () => {
-      const { data } = await Axios('/api/config/google');
-      setGoogleApiKey(data);
+      // const { data } = await Axios('/api/config/google');
+      // setGoogleApiKey(data);
       getUserCurrentLocation();
     };
     fetch();
