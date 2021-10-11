@@ -205,12 +205,12 @@ export default function ShippingScreen(props) {
         
          </div>
           <label />
-  <div>
+  {/* <div>
           <label htmlFor="chooseOnMap">Location</label>
            <button type="button" onClick={chooseOnMap}>
              Choose On Map
            </button>
-         </div>
+         </div> */}
            <li>
              <button type="submit" className="button primary">Continue</button>
            </li>
