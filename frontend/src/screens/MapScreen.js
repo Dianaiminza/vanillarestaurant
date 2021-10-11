@@ -110,7 +110,7 @@ export default function MapScreen(props) {
 
   return isLoaded ? (
     <div className="full-container">
-      <LoadScript libraries={libs} googleMapsApiKey={googleApiKey}>
+      <LoadScript libraries={libs}>
         <GoogleMap
           id="smaple-map"
           mapContainerStyle={{ height: '100%', width: '100%' }}
