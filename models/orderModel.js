@@ -20,8 +20,7 @@ const orderSchema = new mongoose.Schema(
   estate: { type: String },
   postalCode: { type: String },
   phonenumber: { type: String },
-  lat: Number,
-      lng: Number,
+  
     },
     paymentMethod: { type: String },
     paymentResult: {
