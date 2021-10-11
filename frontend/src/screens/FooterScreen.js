@@ -1,15 +1,4 @@
-// import React, { Component } from 'react'
 
-// export default class FooterScreen extends Component {
-//     render() {
-//         return (
-//             <div className="footer">
-//                 <footer className="footer">All right reserved.</footer>
-                
-//             </div>
-//         )
-//     }
-// }
 import {
   Facebook,
   Instagram,
@@ -18,7 +7,6 @@ import {
   Pinterest,
   WhatsApp,
   Room,
-  Twitter,
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -88,11 +76,7 @@ const Right = styled.div`
   padding: 20px;
   ${mobile({ backgroundColor: "#fff8f8" })}
 `;
-const Bottom = styled.div`
-  flex: 1;
-  padding: 20px;
-  ${mobile({ backgroundColor: "#fff8f8" })}
-`;
+
 const ContactItem = styled.div`
   margin-bottom: 20px;
   display: flex;
@@ -163,7 +147,7 @@ const Footer = () => {
           <MailOutline style={{marginRight:"10px"}} /><a href="mailto://vanillarestaurant@gmail.com">vanillarestaurant@gmail.com</a>
         </ContactItem>
         <ContactItem>
-        <a target="_blank" class="button-icon" href="https://www.google.com/maps/place/Royal+Park+Estate/@-1.3284223,36.7732175,17z/data=!4m9!1m2!2m1!1sroyal+park+langata!3m5!1s0x0:0x1f2bb156cf666be4!8m2!3d-1.3285614!4d36.7781281!15sChJyb3lhbCBwYXJrIGxhbmdhdGGSARVyZXNpZGVudHNfYXNzb2NpYXRpb24"><i class="fa fa-map-marker-alt"></i> Find us on google maps</a>
+       <a  target="_blank" rel="noreferrer" class="button-icon" href="https://www.google.com/maps/place/Royal+Park+Estate/@-1.3284223,36.7732175,17z/data=!4m9!1m2!2m1!1sroyal+park+langata!3m5!1s0x0:0x1f2bb156cf666be4!8m2!3d-1.3285614!4d36.7781281!15sChJyb3lhbCBwYXJrIGxhbmdhdGGSARVyZXNpZGVudHNfYXNzb2NpYXRpb24"><i class="fa fa-map-marker-alt"></i> Find us on google maps</a>
         </ContactItem>
         
         <a href="/" class="move-top">This Way Up</a>

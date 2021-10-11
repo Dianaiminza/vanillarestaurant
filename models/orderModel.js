@@ -5,6 +5,8 @@ const shippingSchema = {
   estate: { type: String },
   postalCode: { type: String },
   phonenumber: { type: String },
+  lat: Number,
+      lng: Number,
   
 };
 
@@ -54,8 +56,6 @@ const orderSchema = new mongoose.Schema({
   isDelivered: { type: Boolean, default: false },
   deliveredAt: { type: Date },
   _id: {type:String}, 
-  lat: Number,
-      lng: Number,
   
 }, {
   timestamps: true,

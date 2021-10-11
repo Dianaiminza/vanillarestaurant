@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   LoadScript,
+  useJsApiLoader,
   GoogleMap,
   StandaloneSearchBox,
   Marker,
@@ -14,6 +15,21 @@ const libs = ['places'];
 const defaultLocation = { lat: 45.516, lng: -73.56 };
 
 export default function MapScreen(props) {
+  
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyA_o7FM2m9ZPRceHDT9EDgrVtFIslIQHQ8"
+  })
+  const [map, setMap] = React.useState(null)
+  const onLoad = React.useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
   const [googleApiKey, setGoogleApiKey] = useState('');
   const [center, setCenter] = useState(defaultLocation);
   const [location, setLocation] = useState(center);
@@ -21,7 +37,7 @@ export default function MapScreen(props) {
   const mapRef = useRef(null);
   const placeRef = useRef(null);
   const markerRef = useRef(null);
-
+  
   useEffect(() => {
     const fetch = async () => {
       const { data } = await Axios('/api/config/google');
@@ -31,9 +47,9 @@ export default function MapScreen(props) {
     fetch();
   }, []);
 
-  const onLoad = (map) => {
-    mapRef.current = map;
-  };
+  // const onLoad = (map) => {
+  //   mapRef.current = map;
+  // };
 
   const onMarkerLoad = (marker) => {
     markerRef.current = marker;
@@ -77,7 +93,7 @@ export default function MapScreen(props) {
 
   const getUserCurrentLocation = () => {
     if (!navigator.geolocation) {
-      alert('Geolocation is not supported by this browser');
+      alert('Geolocation os not supported by this browser');
     } else {
       navigator.geolocation.getCurrentPosition((position) => {
         setCenter({
@@ -92,7 +108,7 @@ export default function MapScreen(props) {
     }
   };
 
-  return googleApiKey ? (
+  return isLoaded ? (
     <div className="full-container">
       <LoadScript libraries={libs} googleMapsApiKey={googleApiKey}>
         <GoogleMap
@@ -101,6 +117,7 @@ export default function MapScreen(props) {
           center={center}
           zoom={15}
           onLoad={onLoad}
+          onUnmount={onUnmount}
           onIdle={onIdle}
         >
           <StandaloneSearchBox
