@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 import { createOrder } from '../actions/orderActions';
 function PlaceOrderScreen(props) {
 
@@ -31,10 +32,11 @@ function PlaceOrderScreen(props) {
   }
   useEffect(() => {
     if (success) {
-      props.history.push("/order/" + order._id);
+      props.history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
     }
 
-  }, [success]);
+  }, [dispatch, order, props.history, success]);
 
   return <div>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
