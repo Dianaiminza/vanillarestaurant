@@ -112,10 +112,14 @@ const { cartItems } = cart;
           <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
           </div>
         </main>
+        <footer className="row center">
         <FooterScreen/>
-        <footer >
-          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
         </footer>
+        <footer className="row center">
+          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+          
+        </footer>
+        
       </div>
     </BrowserRouter>
   );
