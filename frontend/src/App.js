@@ -69,7 +69,7 @@ const { cartItems } = cart;
           </div>
         </header>
         <aside className="sidebar">
-          <h3>Food Categories</h3>
+          <strong>Food Categories</strong>
           <button className="sidebar-close-button" onClick={closeMenu}>
             x
           </button>
@@ -104,7 +104,7 @@ const { cartItems } = cart;
             <Route path="/cart/:id?" component={CartScreen}/>
             <Route path="/category/:id" component={HomeScreen}/>
             <Route path="/" exact={true} component={HomeScreen}/>
-             <Route path="/map" component={MapScreen}/>
+             <PrivateRoute path="/map" component={MapScreen}></PrivateRoute>
              <AdminRoute
             path="/dashboard"
             component={DashboardScreen}
@@ -113,6 +113,10 @@ const { cartItems } = cart;
           </div>
         </main>
         <FooterScreen/>
+        <footer className="row center">
+          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+          <div>All right reserved</div>{' '}
+        </footer>
       </div>
     </BrowserRouter>
   );

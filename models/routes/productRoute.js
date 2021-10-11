@@ -23,6 +23,12 @@ router.get('/', async (req, res) => {
   );
   res.send(products);
 });
+router.get(
+  '/categories',
+  async (req, res) => {
+    const categories = await Product.find().distinct('category');
+    res.send(categories);
+  });
 
 router.get('/:id', async (req, res) => {
   const product = await Product.findOne({ _id: req.params.id });
