@@ -37,15 +37,17 @@ export default function MapScreen(props) {
   const mapRef = useRef(null);
   const placeRef = useRef(null);
   const markerRef = useRef(null);
-  
-  useEffect(() => {
-    const fetch = async () => {
-      // const { data } = await Axios('/api/config/google');
-      // setGoogleApiKey(data);
-      getUserCurrentLocation();
-    };
-    fetch();
-  }, []);
+  useEffect(()=>{
+    getUserCurrentLocation();
+  })
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     // const { data } = await Axios('/api/config/google');
+  //     // setGoogleApiKey(data);
+  //     getUserCurrentLocation();
+  //   };
+  //   fetch();
+  // }, []);
 
   // const onLoad = (map) => {
   //   mapRef.current = map;
