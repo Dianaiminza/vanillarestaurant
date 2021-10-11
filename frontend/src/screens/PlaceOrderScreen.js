@@ -1,15 +1,13 @@
-import React, { useEffect,} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
-import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 function PlaceOrderScreen(props) {
 
   const cart = useSelector(state => state.cart);
-  
   const orderCreate = useSelector(state => state.orderCreate);
-  const {  success, order } = orderCreate;
+  const { loading, success, error, order } = orderCreate;
 
   const { cartItems, shipping, payment } = cart;
   if (!shipping.address) {
@@ -34,10 +32,9 @@ function PlaceOrderScreen(props) {
   useEffect(() => {
     if (success) {
       props.history.push("/order/" + order._id);
-      dispatch({ type: ORDER_CREATE_RESET });
     }
 
-  }, [dispatch,order,props.history,success]);
+  }, [success]);
 
   return <div>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
@@ -49,11 +46,10 @@ function PlaceOrderScreen(props) {
           </h3>
           <div>
             {cart.shipping.address}, {cart.shipping.estate},
-          {cart.shipping.postalCode}, {cart.shipping.phonenumber}
+          {cart.shipping.postalCode}, {cart.shipping.phonenumber},
           </div>
         </div>
         <div>
-          
           <h3>Payment</h3>
           <div>
             Payment Method: {cart.payment.paymentMethod}
@@ -99,6 +95,8 @@ function PlaceOrderScreen(props) {
             }
           </ul>
         </div>
+
+      
       </div>
       <div className="placeorder-action">
         <ul>
@@ -125,6 +123,9 @@ function PlaceOrderScreen(props) {
             <div>Ksh{totalPrice}</div>
           </li>
         </ul>
+
+
+
       </div>
 
     </div>
