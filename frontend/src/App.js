@@ -112,7 +112,7 @@ const { cartItems } = cart;
           <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
           </div>
         </main>
-        <footer className="row center">
+        <footer >
         <FooterScreen/>
         </footer>
         <footer className="row center">
