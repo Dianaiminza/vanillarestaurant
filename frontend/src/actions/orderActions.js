@@ -16,7 +16,7 @@ const createOrder = (order) => async (dispatch, getState) => {
         Authorization: ' Bearer ' + userInfo.token
       }
     });
-    dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
+    dispatch({ type: ORDER_CREATE_SUCCESS, payload: data.order });
   } catch (error) {
     dispatch({ type: ORDER_CREATE_FAIL, payload: error.message });
   }
