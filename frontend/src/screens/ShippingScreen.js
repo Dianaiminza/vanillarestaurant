@@ -145,9 +145,9 @@ export default function ShippingScreen(props) {
     }
     let moveOn = true;
     if (!newLat || !newLng) {
-      moveOn = window.confirm(
-        'You did not set your location on map. Continue?'
-      );
+      // moveOn = window.confirm(
+      //   'You did not set your location on map. Continue?'
+      // );
     }
     if (moveOn) {
        dispatch(saveShipping({ address, postalCode, estate,phonenumber,lat: newLat,
