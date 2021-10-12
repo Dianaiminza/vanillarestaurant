@@ -32,9 +32,10 @@ function PlaceOrderScreen(props) {
   useEffect(() => {
     if (success) {
       props.history.push("/order/" + order._id);
+      
     }
 
-  }, [success]);
+  }, [dispatch, order, props.history, success]);
 
   return <div>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
