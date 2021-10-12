@@ -22,6 +22,7 @@ const orderItemSchema = new mongoose.Schema({
   qty: { type: Number},
   image: { type: String },
   price: { type: String},
+  _id: {type:mongoose.Schema.Types.ObjectId,ref:'Order'},
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
@@ -34,6 +35,7 @@ const orderSchema = new mongoose.Schema({
   orderItems: [orderItemSchema],
   shipping: shippingSchema,
   payment: paymentSchema,
+  
   itemsPrice: { type: Number },
   taxPrice: { type: Number },
   shippingPrice: { type: Number },
