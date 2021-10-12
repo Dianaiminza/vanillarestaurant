@@ -42,6 +42,11 @@ function PaypalButton(props) {
       //
     };
   }, []);
+  Object.keys(window).forEach((key) => {
+    if (/paypal|zoid|post_robot/.test(key)) {
+        delete window[key];
+    }
+  })
 
   if (!sdkReady) {
     return <div>Loading...</div>
