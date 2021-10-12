@@ -18,6 +18,7 @@ router.get("/mine", isAuth, async (req, res) => {
 });
 
 router.get("/:id", isAuth, async (req, res) => {
+  
   const order = await Order.findOne({ _id: req.params.id });
   if (order) {
     res.send(order);
@@ -80,8 +81,10 @@ router.get(
 );
 
 router.post("/", isAuth, async (req, res) => {
+  
   const newOrder = new Order({
     orderItems: req.body.orderItems,
+    _id:req.params.id,
     user: req.user._id,
     shipping: req.body.shipping,
     payment: req.body.payment,
