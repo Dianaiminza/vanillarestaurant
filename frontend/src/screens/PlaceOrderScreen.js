@@ -30,12 +30,12 @@ function PlaceOrderScreen(props) {
     }));
   }
   useEffect(() => {
-    if (success) {
-      props.history.push("/order/:id");
+    if (order) {
+      props.history.push("/order/" + order._id);
 
     }
 
-  }, [dispatch, order, props.history, success]);
+  }, [dispatch, order, props.history]);
 
   return <div>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
