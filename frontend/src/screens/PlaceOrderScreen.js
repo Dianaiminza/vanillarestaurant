@@ -52,7 +52,8 @@ export default function PlaceOrderScreen(props) {
               <div className="card card-body">
                 <h2>Payment</h2>
                 <p>
-                  <strong>Method:</strong> {cart.paymentMethod}
+                <strong>Payment Method:</strong> {cart.payment.paymentMethod}
+                  
                 </p>
               </div>
             </li>
