@@ -35,7 +35,7 @@ const orderSchema = new mongoose.Schema({
   orderItems: [orderItemSchema],
   shipping: shippingSchema,
   payment: paymentSchema,
-  
+
   itemsPrice: { type: Number },
   taxPrice: { type: Number },
   shippingPrice: { type: Number },

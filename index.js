@@ -22,6 +22,17 @@ mongoose .connect(mongodbUrl, {
   
 
 const app = express();
+const Mpesa = require("mpesa-api").Mpesa;
+
+const credentials = {
+  clientKey: 'O1go0C0XDC3wKwVrK4DdBV4AJIGXAr1X',
+  clientSecret: 'Aoar2KjX6uEdRbTy',
+  initiatorPassword: 'Captain224#',
+  securityCredential: 'IqUIifZGWRPZXdG0wHa37AxidJgmFHw/TbAdK95bZuqgdATo0dNBerVPxIxBDrD9lRPIIIcj+GuaCLgyEA3+Vtm0sp0x3qyQBPffMinNyI/gqauT25bPb5n9EruxA4SDEdwaTlfRtALBr7E5jwszzKEso5SrBu1idzlb82yYRhfUlpoMuC9tmfboAzDtWv5Jsr27ZhbSHc2mkwu/p9huzqM9n/9uWch+zFxuUPWz9Yh+tJPdncvUY3aeglOcmqbXBI7irhS0SfrutRFSNjtX0e617OyrTYMeJ+LfbvmEqRhkGig1g9mbk6dzOTX5DGg+FpGkcwrFDo1o8ZHQpmo8jg==',
+  certificatePath: null
+};
+const environment = "sandbox";
+const mpesa = new Mpesa(credentials, environment);
 app.use(bodyParser.json());
 app.use('/api/uploads', uploadRoute);
 app.use('/api/users', userRoute);
@@ -36,6 +47,54 @@ app.get('/api/config/paypal', (req, res) => {
 });
 app.get('/api/config/google', (req, res) => {
   res.send(process.env.GOOGLE_API_KEY || 'AIzaSyA_o7FM2m9ZPRceHDT9EDgrVtFIslIQHQ8');
+});
+var unirest = require('unirest');
+var req = unirest('GET', 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials')
+.headers({ 'Authorization': 'Bearer cFJZcjZ6anEwaThMMXp6d1FETUxwWkIzeVBDa2hNc2M6UmYyMkJmWm9nMHFRR2xWOQ==' })
+.send()
+.end(res => {
+	if (res.error);
+	console.log(res.raw_body);
+});
+app.post('/api/mpesa',(req,res)=>{
+  mpesa
+  .lipaNaMpesaOnline({
+    BusinessShortCode: 174379,
+    Password: "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjExMTE4MjIzNTM5",
+    Timestamp: "20211118223539",
+    TransactionType: "CustomerPayBillOnline",
+    Amount: 1,
+    PartyA: 254728131955,
+    PartyB: 174379,
+    PhoneNumber: 254728131955,
+    CallBackURL: "https://mydomain.com/path",
+    AccountReference: "CompanyXLTD",
+    TransactionDesc: "Payment of X",
+  })
+  .then((response) => {
+    //Do something with the response
+    //eg
+    res.json(response);
+  })
+  .catch((error) => {
+    //Do something with the error;
+    //eg
+    res.json(error);
+  });
+})
+app.post('/hooks/mpesa', (req, res) => {
+  console.log('-----------Received M-Pesa webhook-----------');
+	
+  // format and dump the request payload recieved from safaricom in the terminal
+  
+	
+  let message = {
+	  "ResponseCode": "00000000",
+	  "ResponseDesc": "success"
+	};
+	
+  // respond to safaricom servers with a success message
+  res.json(message);
 });
 // app.use(express.static(path.join(__dirname, '//frontend/build')));
 // app.get('*', (req, res) => {
